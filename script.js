@@ -32,7 +32,7 @@ const WHATSAPP_NUM    = '919999999999'; // <-- REPLACE with your WhatsApp number
 const THANKYOU_URL    = 'thankyou.html'; // Relative URL of thank you page
 
 /* Google Apps Script Web App URL (see setup guide for how to get this) */
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'; // <-- REPLACE
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw7hc54FNpQwRMQaz8DcPy--prARkhq5IVx475h1DZPz47RCsTXf7EivOzax6zk72arkA/exec'; // <-- REPLACE
 
 function initiatePayment() {
   /* Fire Meta Pixel — InitiateCheckout */
