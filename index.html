@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flute Mastery — Learn Flute From Home | Online Flute Course ₹699</title>
+  <meta name="description" content="Learn flute from home with step-by-step video lessons. Beginner to advanced. 20+ HD lessons, 30+ popular songs, lifetime access. Start FREE today!" />
+  <meta name="keywords" content="flute course online, learn flute at home, flute lessons India, flute mastery, bansuri course" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://yourdomain.com/" />
+
+  <meta property="og:title" content="Flute Mastery — Learn Flute From Home" />
+  <meta property="og:description" content="Step-by-step online flute course. Start FREE today!" />
+  <meta property="og:url" content="https://yourdomain.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://yourdomain.com/og-image.jpg" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- META PIXEL — ID: 1001951225815875 -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1001951225815875');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1001951225815875&ev=PageView&noscript=1" /></noscript>
+
+  <!-- Razorpay SDK -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+
+  <!-- ── ENROLLMENT MODAL ──────────────────────────────────── -->
+  <div class="modal-overlay" id="enrollModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeEnrollmentModal()" aria-label="Close">✕</button>
+
+      <div class="modal-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        Flute<span>Mastery</span>
+      </div>
+
+      <h2 class="modal-title" id="modalTitle">Almost there! 🎵</h2>
+      <p class="modal-subtitle">Enter your details below to get instant course access after payment.</p>
+
+      <form class="modal-form" id="enrollForm" onsubmit="handleEnrollSubmit(event)" novalidate>
+        <div class="form-group">
+          <label for="enrollName">Full Name <span style="color:#EF4444">*</span></label>
+          <input type="text" id="enrollName" name="name" required autocomplete="name"
+                 placeholder="e.g. Rahul Kumar" inputmode="text" />
+          <span class="field-error" id="enrollNameError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="enrollEmail">Email Address <span style="color:#EF4444">*</span></label>
+          <input type="email" id="enrollEmail" name="email" required autocomplete="email"
+                 placeholder="rahul@gmail.com" inputmode="email" />
+          <span class="field-error" id="enrollEmailError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="enrollWhatsapp">WhatsApp Number <span style="color:#EF4444">*</span></label>
+          <input type="tel" id="enrollWhatsapp" name="phone" required autocomplete="tel"
+                 placeholder="+91 98765 43210" inputmode="tel" />
+          <span class="field-error" id="enrollWhatsappError"></span>
+        </div>
+
+        <div class="modal-price-row">
+          <span class="modal-price-label">Course Price</span>
+          <span>
+            <span class="modal-price-amount">₹699</span>
+            <span class="modal-price-orig">₹2,499</span>
+          </span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full btn-lg modal-submit" id="enrollSubmitBtn">
+          <span class="btn-text">🔐 Proceed to Secure Payment</span>
+          <span class="btn-spinner"></span>
+        </button>
+
+        <p class="modal-status" id="modalStatus"></p>
+
+        <div class="modal-trust">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Secure payment powered by Razorpay · SSL encrypted
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- ── END MODAL ─────────────────────────────────────────── -->
+
+  <!-- ── NAV ──────────────────────────────────────────────── -->
+  <nav class="nav" id="mainNav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        Flute<span>Mastery</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#course">Course</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <a href="#pricing" class="btn btn-primary btn-sm nav-cta" onclick="openEnrollmentModal();return false;">Unlock Full Course – ₹699</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile menu">
+      <a href="#about">About</a>
+      <a href="#course">Course</a>
+      <a href="#free-lesson">Free Lesson</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="contact.html">Contact</a>
+      <a href="#pricing" class="btn btn-primary" onclick="openEnrollmentModal();return false;">Unlock Full Course – ₹699</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ─────────────────────────────────────────────── -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-grain" aria-hidden="true"></div>
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="dot" aria-hidden="true"></span>
+          Now Enrolling — Only ₹699
+        </div>
+        <h1 class="hero-title">
+          Learn Flute<br>
+          <em>The Right Way,</em><br>
+          From Home
+        </h1>
+        <p class="hero-subtitle">
+          Step-by-step online bansuri &amp; flute course — from complete beginner to playing your favourite songs. No music background needed.
+        </p>
+        <div class="hero-actions">
+          <a href="#free-lesson" class="btn btn-primary btn-lg btn-pulse" onclick="fbqTrack('ViewContent')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Watch Free First Class
+          </a>
+          <button class="btn btn-outline btn-lg" onclick="openEnrollmentModal()">
+            Unlock Full Course – ₹699
+          </button>
+        </div>
+        <div class="hero-social-proof">
+          <div class="avatars" aria-label="Student avatars">
+            <div class="avatar-placeholder" aria-hidden="true">R</div>
+            <div class="avatar-placeholder" style="background:linear-gradient(135deg,#8B5CF6,#EC4899)" aria-hidden="true">S</div>
+            <div class="avatar-placeholder" style="background:linear-gradient(135deg,#06B6D4,#3B82F6)" aria-hidden="true">P</div>
+            <div class="avatar-placeholder" style="background:linear-gradient(135deg,#10B981,#059669)" aria-hidden="true">A</div>
+          </div>
+          <div>
+            <div class="stars" aria-label="5 star rating">★★★★★</div>
+            <p class="social-text"><strong>2,000+ students</strong> already enrolled</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-card">
+          <div class="hero-card-title">🎵 Flute Mastery Course</div>
+          <div class="hero-card-price">₹699</div>
+          <div class="hero-card-orig">₹2,499 — 72% off</div>
+          <ul class="hero-card-features">
+            <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span> 20+ Full HD Video Lessons</li>
+            <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span> Practice Exercises &amp; PDFs</li>
+            <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span> Learn 30+ Popular Songs</li>
+            <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span> Lifetime Access</li>
+            <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span> WhatsApp Support</li>
+          </ul>
+          <button class="btn btn-primary btn-full btn-lg btn-pulse" onclick="openEnrollmentModal()">
+            Unlock Full Course – ₹699
+          </button>
+          <div class="trust-row">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Secure Payment via Razorpay
+          </div>
+        </div>
+        <div class="hero-badge">
+          <div class="badge-icon" aria-hidden="true">🎯</div>
+          <div class="badge-text"><strong>No music background needed</strong> Start from absolute zero — play songs in weeks</div>
+        </div>
+        <div class="hero-badge">
+          <div class="badge-icon" aria-hidden="true">📱</div>
+          <div class="badge-text"><strong>WhatsApp Support Included</strong> Get personal guidance whenever you need it</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURES ──────────────────────────────────────────── -->
+  <section class="features section-sm" id="about">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-item" data-reveal>
+          <div class="feature-icon" aria-hidden="true">👶</div>
+          <div class="feature-title">Beginner Friendly</div>
+          <div class="feature-desc">Start from zero. No prior music knowledge required whatsoever.</div>
+        </div>
+        <div class="feature-item" data-reveal>
+          <div class="feature-icon" aria-hidden="true">🎵</div>
+          <div class="feature-title">30+ Popular Songs</div>
+          <div class="feature-desc">Play Bollywood hits, folk, devotional, and more with step-by-step guidance.</div>
+        </div>
+        <div class="feature-item" data-reveal>
+          <div class="feature-icon" aria-hidden="true">♾️</div>
+          <div class="feature-title">Lifetime Access</div>
+          <div class="feature-desc">Access all lessons and future updates forever, at your own pace.</div>
+        </div>
+        <div class="feature-item" data-reveal>
+          <div class="feature-icon" aria-hidden="true">💬</div>
+          <div class="feature-title">WhatsApp Support</div>
+          <div class="feature-desc">Personal guidance from the instructor — doubts cleared quickly.</div>
+        </div>
+        <div class="feature-item" data-reveal>
+          <div class="feature-icon" aria-hidden="true">📱</div>
+          <div class="feature-title">Learn From Home</div>
+          <div class="feature-desc">Watch on any device, anytime. No fixed schedule needed.</div>
+        </div>
+        <div class="feature-item" data-reveal>
+          <div class="feature-icon" aria-hidden="true">💰</div>
+          <div class="feature-title">One-Time Payment</div>
+          <div class="feature-desc">Pay once, learn forever. No subscriptions, no hidden charges.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FREE LESSON ────────────────────────────────────────── -->
+  <section class="free-lesson section" id="free-lesson">
+    <div class="container">
+      <div class="lesson-grid">
+        <div data-reveal>
+          <div class="lesson-eyebrow">🎁 Free First Class</div>
+          <h2 class="lesson-title">Watch Your First Lesson — Completely Free</h2>
+          <p class="lesson-desc">
+            Experience our teaching style before you buy anything. This lesson covers how to hold the flute, produce your first sound, and understand basic finger positions.
+          </p>
+          <ul class="lesson-points">
+            <li><span class="lp-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>How to hold the flute correctly</li>
+            <li><span class="lp-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>Produce your first clear note</li>
+            <li><span class="lp-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>Basic breathing technique for flute</li>
+            <li><span class="lp-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>Understanding swars (notes) — Sa, Re, Ga</li>
+          </ul>
+          <button class="btn btn-primary btn-lg" onclick="openEnrollmentModal()">
+            Like it? Unlock the Full Course – ₹699
+          </button>
+        </div>
+        <div data-reveal>
+          <!-- REPLACE YOUTUBE_VIDEO_ID with your actual unlisted YouTube video ID -->
+          <div class="video-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/UM5jeycaJ8w?rel=0&modestbranding=1&color=white"
+              title="Flute Mastery — Free First Lesson"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+          <p class="video-caption">🔒 Full course access after one-time payment of ₹699</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CURRICULUM ─────────────────────────────────────────── -->
+  <section class="curriculum section" id="course">
+    <div class="container text-center">
+      <span class="tag">Course Curriculum</span>
+      <h2 class="section-heading">What You'll Learn</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+      <p class="section-subheading">A complete journey from beginner to confidently playing your favourite songs</p>
+      <div class="curriculum-grid">
+        <div class="curriculum-card" data-reveal>
+          <div class="cc-icon" aria-hidden="true">🎼</div>
+          <div class="cc-title">Flute Basics</div>
+          <div class="cc-desc">Know your flute, parts, posture, breathing, and correct finger positions.</div>
+          <ul class="cc-lessons"><li><span>Posture &amp; Grip</span></li><li><span>Parts of Flute</span></li><li><span>First Sound</span></li></ul>
+        </div>
+        <div class="curriculum-card" data-reveal>
+          <div class="cc-icon" aria-hidden="true">🎵</div>
+          <div class="cc-title">Swar &amp; Alankars</div>
+          <div class="cc-desc">Master all 7 swars, alankars, and build a rock-solid musical foundation.</div>
+          <ul class="cc-lessons"><li><span>Sa Re Ga Ma</span></li><li><span>All Alankars</span></li><li><span>Rhythm Practice</span></li></ul>
+        </div>
+        <div class="curriculum-card" data-reveal>
+          <div class="cc-icon" aria-hidden="true">🎤</div>
+          <div class="cc-title">Song Lessons</div>
+          <div class="cc-desc">Step-by-step song lessons with notes and practice exercises for each song.</div>
+          <ul class="cc-lessons"><li><span>Bollywood Hits</span></li><li><span>Devotional</span></li><li><span>Folk Songs</span></li></ul>
+        </div>
+        <div class="curriculum-card" data-reveal>
+          <div class="cc-icon" aria-hidden="true">🔥</div>
+          <div class="cc-title">Advanced Techniques</div>
+          <div class="cc-desc">Meend, Gamak, Murki, and ornamental techniques to elevate your playing.</div>
+          <ul class="cc-lessons"><li><span>Meend</span></li><li><span>Gamak</span></li><li><span>Murki &amp; Khatka</span></li></ul>
+        </div>
+        <div class="curriculum-card" data-reveal>
+          <div class="cc-icon" aria-hidden="true">🧘</div>
+          <div class="cc-title">Breathing &amp; Tone</div>
+          <div class="cc-desc">Control your breath, improve tone quality, and develop endurance for longer sessions.</div>
+          <ul class="cc-lessons"><li><span>Breath Control</span></li><li><span>Tone Quality</span></li><li><span>Stamina Building</span></li></ul>
+        </div>
+        <div class="curriculum-card" data-reveal>
+          <div class="cc-icon" aria-hidden="true">🎶</div>
+          <div class="cc-title">Rhythm &amp; Taal</div>
+          <div class="cc-desc">Understand taal, develop your sense of rhythm, and play in time with confidence.</div>
+          <ul class="cc-lessons"><li><span>Teentaal</span></li><li><span>Keherwa</span></li><li><span>Dadra</span></li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS ──────────────────────────────────────────────── -->
+  <section class="stats section-sm">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item" data-reveal><div class="stat-num">2,000+</div><div class="stat-label">Students Enrolled</div></div>
+        <div class="stat-item" data-reveal><div class="stat-num">4.9/5</div><div class="stat-label">Average Rating</div></div>
+        <div class="stat-item" data-reveal><div class="stat-num">30+</div><div class="stat-label">Songs Included</div></div>
+        <div class="stat-item" data-reveal><div class="stat-num">100%</div><div class="stat-label">Satisfaction</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIALS ───────────────────────────────────────── -->
+  <section class="testimonials section" id="testimonials">
+    <div class="container text-center">
+      <span class="tag">Student Stories</span>
+      <h2 class="section-heading">What Our Students Say</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+      <p class="section-subheading" style="color:rgba(255,255,255,0.5)">Real results from real students across India</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card" data-reveal>
+          <div class="tc-stars" aria-label="5 stars">★★★★★</div>
+          <p class="tc-quote">"I had zero music knowledge before this. Within 3 weeks I was playing Kesariya on the flute. The lessons are so clear and simple — I wish I had found this sooner!"</p>
+          <div class="tc-author"><div class="tc-avatar" aria-hidden="true">R</div><div><div class="tc-name">Rohan S.</div><div class="tc-location">Mumbai, Maharashtra</div></div></div>
+        </div>
+        <div class="testimonial-card" data-reveal>
+          <div class="tc-stars" aria-label="5 stars">★★★★★</div>
+          <p class="tc-quote">"Tried YouTube tutorials for months but couldn't get anywhere. This course is structured beautifully. Now I play every morning and it's the best part of my day."</p>
+          <div class="tc-author"><div class="tc-avatar" style="background:linear-gradient(135deg,#8B5CF6,#EC4899)" aria-hidden="true">P</div><div><div class="tc-name">Priya M.</div><div class="tc-location">Bangalore, Karnataka</div></div></div>
+        </div>
+        <div class="testimonial-card" data-reveal>
+          <div class="tc-stars" aria-label="5 stars">★★★★★</div>
+          <p class="tc-quote">"The WhatsApp support is incredible. Had a doubt at 9pm and got a voice note reply within 30 minutes. That level of personal attention is rare. Highly recommended!"</p>
+          <div class="tc-author"><div class="tc-avatar" style="background:linear-gradient(135deg,#06B6D4,#3B82F6)" aria-hidden="true">A</div><div><div class="tc-name">Amit K.</div><div class="tc-location">Delhi, NCR</div></div></div>
+        </div>
+        <div class="testimonial-card" data-reveal>
+          <div class="tc-stars" aria-label="5 stars">★★★★★</div>
+          <p class="tc-quote">"At ₹699 this is an absolute steal. I've spent way more on in-person classes and learned much less. The PDF notes are brilliant for revision. Thank you!"</p>
+          <div class="tc-author"><div class="tc-avatar" style="background:linear-gradient(135deg,#F59E0B,#EF4444)" aria-hidden="true">S</div><div><div class="tc-name">Sunita R.</div><div class="tc-location">Jaipur, Rajasthan</div></div></div>
+        </div>
+        <div class="testimonial-card" data-reveal>
+          <div class="tc-stars" aria-label="5 stars">★★★★★</div>
+          <p class="tc-quote">"I'm 52 years old and always wanted to learn flute. This course made it possible. The pace is perfect, and I'm now playing Om Jai Jagdish Hare beautifully."</p>
+          <div class="tc-author"><div class="tc-avatar" style="background:linear-gradient(135deg,#10B981,#059669)" aria-hidden="true">V</div><div><div class="tc-name">Vinod P.</div><div class="tc-location">Pune, Maharashtra</div></div></div>
+        </div>
+        <div class="testimonial-card" data-reveal>
+          <div class="tc-stars" aria-label="5 stars">★★★★★</div>
+          <p class="tc-quote">"The alankars section transformed my playing completely. I could feel the difference within a week of practice. The instructor explains every detail so patiently."</p>
+          <div class="tc-author"><div class="tc-avatar" style="background:linear-gradient(135deg,#EC4899,#F59E0B)" aria-hidden="true">N</div><div><div class="tc-name">Neha J.</div><div class="tc-location">Lucknow, UP</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRICING ────────────────────────────────────────────── -->
+  <section class="pricing section" id="pricing">
+    <div class="container text-center">
+      <span class="tag">Simple Pricing</span>
+      <h2 class="section-heading">One Price. Lifetime Access.</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+      <p class="section-subheading">No subscriptions. No recurring fees. Pay once and learn forever.</p>
+      <div class="pricing-card" data-reveal>
+        <div class="pricing-header">
+          <div class="pricing-badge">🔥 Most Popular</div>
+          <div class="pricing-name">Flute Mastery — Complete Course</div>
+          <div class="pricing-amount">
+            <span class="pricing-currency">₹</span>
+            <span class="pricing-price">699</span>
+            <span class="pricing-orig">₹2,499</span>
+          </div>
+          <span class="pricing-save">You save ₹1,800 (72% off)</span>
+        </div>
+        <div class="pricing-body">
+          <ul class="pricing-features">
+            <li><span class="pf-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>20+ Full HD Video Lessons (structured beginner to advanced)</li>
+            <li><span class="pf-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>Practice Exercises &amp; Printable PDF Notes</li>
+            <li><span class="pf-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>Learn 30+ Popular Bollywood &amp; Folk Songs</li>
+            <li><span class="pf-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>Lifetime Access — Learn at your own pace, forever</li>
+            <li><span class="pf-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>WhatsApp Support — Personal guidance from instructor</li>
+            <li><span class="pf-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>Google Drive Access — Watch on any device, anytime</li>
+            <li><span class="pf-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>7-Day Money-Back Guarantee — No questions asked</li>
+          </ul>
+          <button class="btn btn-primary btn-lg btn-full btn-pulse" onclick="openEnrollmentModal()">
+            🎵 Unlock Full Course – ₹699
+          </button>
+          <div class="trust-row" style="margin-top:16px">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span style="color:rgba(255,255,255,0.4);font-size:0.78rem">Secure payment powered by Razorpay · SSL encrypted</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ───────────────────────────────────────────────── -->
+  <section class="faq section" id="faq">
+    <div class="container text-center">
+      <span class="tag">FAQ</span>
+      <h2 class="section-heading">Frequently Asked Questions</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+      <div class="faq-grid" style="margin-top:40px">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+            Is this course suitable for complete beginners?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </div>
+          <div class="faq-answer" role="region">Yes! This course is designed specifically for beginners. We start from absolute zero — how to hold the flute, how to breathe, and produce your first note. No prior music knowledge is needed.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+            Which type of flute do I need?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </div>
+          <div class="faq-answer" role="region">We recommend a C-scale or E-scale bamboo bansuri for beginners, available online for ₹150–500. The first lesson also covers which flute to buy and where to get it.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+            How will I get access to the course after payment?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </div>
+          <div class="faq-answer" role="region">Immediately after payment, you will be redirected to a thank you page with your course access link. A confirmation email with the Google Drive link and PDF will also be sent to your email automatically.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+            Do I need any musical background?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </div>
+          <div class="faq-answer" role="region">Absolutely not. This course is built for people with zero musical background. We explain everything from scratch in simple Hindi and English.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+            Is there a refund policy?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </div>
+          <div class="faq-answer" role="region">Yes! We offer a 7-day money-back guarantee. If you are not satisfied, contact us on WhatsApp within 7 days of purchase for a full refund. See our <a href="refund-policy.html">Refund Policy</a> for details.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+            Will I get lifetime access?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </div>
+          <div class="faq-answer" role="region">Yes. You pay once and get lifetime access to all lessons, PDFs, and any future updates we add to the course. There are no subscriptions or recurring fees.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+            Can I download the lessons?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </div>
+          <div class="faq-answer" role="region">The lessons are delivered via a private Google Drive link. You can stream them on any device. For offline access, contact us on WhatsApp at +91 87092 68496.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+            What payment methods are accepted?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </div>
+          <div class="faq-answer" role="region">All major payment methods are accepted via Razorpay — UPI, Debit Card, Credit Card, Net Banking, and Wallets. Payment is 100% secure and SSL encrypted.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA BANNER ─────────────────────────────────────────── -->
+  <section class="cta-banner section">
+    <div class="container">
+      <h2 class="section-heading">Start Your Flute Journey Today</h2>
+      <p>Watch the free lesson. If you love it, unlock the full course for just ₹699.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a href="#free-lesson" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.3)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Watch Free First Class
+        </a>
+        <button class="btn btn-primary btn-lg btn-pulse" onclick="openEnrollmentModal()">
+          Unlock Full Course – ₹699
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="display:inline-flex">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            Flute<span>Mastery</span>
+          </a>
+          <p>Learn flute from the comfort of your home. Step-by-step online course for beginners to advanced learners.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#course">Course</a></li>
+            <li><a href="#free-lesson">Free Lesson</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+            <li><a href="refund-policy.html">Refund Policy</a></li>
+            <li><a href="course-delivery.html">Course Delivery</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="https://wa.me/918709268496">WhatsApp Support</a></li>
+            <li><a href="mailto:prateek132008@gmail.com">prateek132008@gmail.com</a></li>
+            <li><a href="contact.html">Contact Form</a></li>
+            <li><a href="refund-policy.html">Refund Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Flute Mastery. All rights reserved. Secure payments by Razorpay.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="YouTube">▶</a>
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="https://wa.me/918709268496" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── WHATSAPP FLOAT ──────────────────────────────────────── -->
+  <a href="https://wa.me/918709268496?text=Hi!%20I'm%20interested%20in%20the%20Flute%20Mastery%20course"
+     class="wa-float"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.480-8.413Z"/>
+    </svg>
+    <span>Chat with Us</span>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
