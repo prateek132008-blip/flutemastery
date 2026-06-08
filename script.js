@@ -23,7 +23,7 @@ function fbqTrack(event, data) {
   ============================================================
 */
 
-const RAZORPAY_KEY_ID = 'rzp_live_XXXXXXXXXXXXXXXXX'; // <-- REPLACE with your Razorpay Key ID
+const RAZORPAY_KEY_ID = 'rzp_test_SdLEnL0lYIFFpw'; // <-- REPLACE with your Razorpay Key ID
 const COURSE_AMOUNT   = 69900; // Amount in paise (₹699 = 69900 paise)
 const COURSE_NAME     = 'Flute Mastery — Complete Course';
 const BUSINESS_NAME   = 'Flute Mastery';
