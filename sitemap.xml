@@ -4,42 +4,42 @@
   <!-- REPLACE yourdomain.com with your actual domain throughout this file -->
 
   <url>
-    <loc>https://yourdomain.com/</loc>
+    <loc>https://fluteroom.store/</loc>
     <lastmod>2024-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://yourdomain.com/contact.html</loc>
+    <loc>https://fluteroom.store/contact.html</loc>
     <lastmod>2024-12-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://yourdomain.com/privacy-policy.html</loc>
+    <loc>https://fluteroom.store/privacy-policy.html</loc>
     <lastmod>2024-12-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://yourdomain.com/terms-and-conditions.html</loc>
+    <loc>https://fluteroom.store/terms-and-conditions.html</loc>
     <lastmod>2024-12-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://yourdomain.com/refund-policy.html</loc>
+    <loc>https://fluteroom.store/refund-policy.html</loc>
     <lastmod>2024-12-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://yourdomain.com/course-delivery.html</loc>
+    <loc>https://fluteroom.store/course-delivery.html</loc>
     <lastmod>2024-12-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
