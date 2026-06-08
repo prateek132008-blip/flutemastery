@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block thank you page from indexing
+Disallow: /thankyou.html
+
+# Sitemap location — REPLACE yourdomain.com with your actual domain
+Sitemap: https://yourdomain.com/sitemap.xml
