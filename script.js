@@ -271,15 +271,6 @@ function initiatePayment() {
         sessionStorage.setItem('rzp_student_email', _studentData.email || '');
       } catch (e) { /* ignore */ }
 
-      /* Meta Pixel — Purchase */
-      fbqTrack('Purchase', {
-        value:          699,
-        currency:       'INR',
-        content_name:   COURSE_NAME,
-        content_type:   'product',
-        transaction_id: paymentId,
-      });
-
       /* Step 3 — Update sheet row with payment confirmation + trigger email.
          FIX: Pass the same rowToken so Apps Script matches the correct row.
          Redirect happens after a short delay to give the fetch time to fire,
@@ -393,14 +384,27 @@ document.querySelectorAll('.faq-question').forEach(function (el) {
   if (idEl)   idEl.textContent   = paymentId;
   if (nameEl && name) nameEl.textContent = name;
 
-  if (params.get('payment_id')) {
-    fbqTrack('Purchase', {
-      value:          699,
-      currency:       'INR',
-      content_name:   COURSE_NAME,
-      content_type:   'product',
-      transaction_id: paymentId,
-    });
+  /* Meta Pixel — Purchase (fires exactly once per paymentId, never on refresh) */
+  if (paymentId && paymentId !== 'N/A') {
+    var _fireKey = 'px_purchase_fired_' + paymentId;
+    var _alreadyFired = false;
+    try { _alreadyFired = !!sessionStorage.getItem(_fireKey); } catch (e) { /* ignore */ }
+
+    if (!_alreadyFired) {
+      try { sessionStorage.setItem(_fireKey, '1'); } catch (e) { /* ignore */ }
+      /* Strip ?payment_id= from URL so refreshes cannot re-trigger */
+      try {
+        var _cleanUrl = window.location.pathname;
+        window.history.replaceState(null, '', _cleanUrl);
+      } catch (e) { /* ignore */ }
+      fbqTrack('Purchase', {
+        value:          699,
+        currency:       'INR',
+        content_name:   COURSE_NAME,
+        content_type:   'product',
+        transaction_id: paymentId,
+      });
+    }
   }
 })();
 
