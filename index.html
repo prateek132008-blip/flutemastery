@@ -936,7 +936,20 @@ p { font-family: 'Inter', sans-serif; }
   box-shadow: 0 8px 32px rgba(76,175,80,0.3);
 }
 .thankyou-content h2 { font-size: 1.8rem; color: var(--teal-deep); margin-bottom: 12px; }
-.thankyou-content p { color: var(--stone); font-size: 0.925rem; line-height: 1.7; margin-bottom: 28px; }
+.thankyou-content p { color: var(--stone); font-size: 0.925rem; line-height: 1.7; margin-bottom: 16px; }
+.thankyou-alert {
+  background: #FDECEA;
+  border: 2px solid #D32F2F;
+  color: #D32F2F;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  padding: 14px 16px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+}
 .thankyou-info {
   background: var(--ivory-warm);
   border-radius: 10px;
@@ -1047,7 +1060,7 @@ p { font-family: 'Inter', sans-serif; }
         <p class="hero-sub">Master the basics through structured lessons, personal guidance, and step-by-step training designed specifically for beginners.</p>
         <div class="hero-ctas">
           <a href="#pricing" class="btn btn-gold btn-lg">Start Learning Today →</a>
-          <a href="https://wa.me/918709268496?text=Hello%2C%20I%27m%20interested%20in%20learning%20flute%20online.%20Can%20you%20tell%20me%20more%3F" target="_blank" class="btn btn-whatsapp btn-lg">💬 Chat on WhatsApp</a>
+          <a href="#free-lesson" class="btn btn-outline btn-lg" style="color:white;border-color:rgba(255,255,255,0.4);">▶ Watch Chapter 01 for Free</a>
         </div>
         <div class="hero-trust">
           <div class="trust-item"><span class="icon">✓</span> Lifetime Access</div>
@@ -1153,7 +1166,7 @@ p { font-family: 'Inter', sans-serif; }
       <h2>13 Step-by-Step Lessons to <br>Take You from Zero to Playing</h2>
       <div class="staff-divider"><span>♩</span></div>
     </div>
-    <div class="free-lesson-card fade-up">
+    <div class="free-lesson-card fade-up" id="free-lesson">
       <div class="free-lesson-badge">▶ Free Preview</div>
       <h3>Watch Chapter 1 — Free</h3>
       <p>See exactly how the course is taught before you enroll. Watch the full first lesson below, no payment needed.</p>
@@ -1308,7 +1321,7 @@ p { font-family: 'Inter', sans-serif; }
       </div>
     </div>
     <div style="text-align:center;margin-top:40px;">
-      <a href="#pricing" class="btn btn-primary btn-lg">Enroll Now — Watch Free Lesson →</a>
+      <a href="#pricing" class="btn btn-primary btn-lg">Enroll Now →</a>
     </div>
   </div>
 </section>
@@ -1929,17 +1942,20 @@ function showThankYou(data) {
   const messages = {
     plan1: {
       title: 'Welcome to FluteRoom!',
-      body: 'Your purchase was successful. Your course access link has been sent to your email. IF YOU DO NOT RECEIVE IT WITHIN A FEW MINUTES, CONTACT US ON WHATSAPP.',
+      body: 'Your purchase was successful and you have been enrolled.',
+      accessText: 'CONTACT US ON WHATSAPP TO GET YOUR COURSE ACCESS',
       waMsg: `Hello, I purchased the Course Only Plan (Payment ID: ${data.paymentId}). Please share my course access link. My name is ${data.name}.`
     },
     plan2: {
       title: 'Welcome to FluteRoom!',
-      body: 'Your purchase was successful. Your course access link has been sent to your email. IF YOU DO NOT RECEIVE IT WITHIN A FEW MINUTES, CONTACT US ON WHATSAPP. Your WhatsApp support access will be activated shortly.',
+      body: 'Your purchase was successful and you have been enrolled.',
+      accessText: 'CONTACT US ON WHATSAPP TO GET YOUR COURSE ACCESS + WHATSAPP SUPPORT',
       waMsg: `Hello, I purchased the Course + WhatsApp Support Plan (Payment ID: ${data.paymentId}). Please share my course access link and activate my WhatsApp support. My name is ${data.name}.`
     },
     plan3: {
       title: 'Welcome to Your Premium Journey!',
-      body: 'Your purchase was successful. Your course access link has been sent to your email. IF YOU DO NOT RECEIVE IT WITHIN A FEW MINUTES, CONTACT US ON WHATSAPP. Your WhatsApp support and live class access will be activated soon.',
+      body: 'Your purchase was successful and you have been enrolled.',
+      accessText: 'CONTACT US ON WHATSAPP TO GET YOUR COURSE ACCESS + LIVE CLASS ACCESS',
       waMsg: `Hello, I purchased the Premium Mentorship Plan (Payment ID: ${data.paymentId}). Please share my course access link, activate my support, and guide me regarding scheduling my live classes. My name is ${data.name}.`
     }
   };
@@ -1951,6 +1967,7 @@ function showThankYou(data) {
     <div class="thankyou-icon">✓</div>
     <h2>${msg.title}</h2>
     <p>${msg.body}</p>
+    <div class="thankyou-alert">⚠ ${msg.accessText} ⚠</div>
     <div class="thankyou-info">
       <p><strong>Name:</strong> ${data.name}</p>
       <p><strong>Plan:</strong> ${data.plan}</p>
