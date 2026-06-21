@@ -1,0 +1,2167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn Flute From Home | Beginner Flute Course Online</title>
+<meta name="description" content="Master the flute from home with 13 structured video lessons, PDF guide, and lifetime access. Designed specifically for complete beginners. Start today!">
+
+<!-- Razorpay -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '999828902901892');
+fbq('track', 'PageView');
+</script>
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=999828902901892&ev=PageView&noscript=1"/>
+</noscript>
+
+<style>
+/* ============================================
+   TOKEN SYSTEM
+   Design: Deep teal (#0D3B38) on warm ivory (#FAF8F4)
+   Accent: Burnished gold (#C9A84C)
+   Signature: Musical staff lines as section dividers
+   Type: Cormorant Garamond (display) + Inter (body)
+============================================ */
+:root {
+  --teal-deep: #0D3B38;
+  --teal-mid: #1A5C57;
+  --teal-light: #2E8B84;
+  --gold: #C9A84C;
+  --gold-light: #E8C96B;
+  --ivory: #FAF8F4;
+  --ivory-warm: #F3EEE5;
+  --stone: #8B7E74;
+  --ink: #1C1410;
+  --white: #FFFFFF;
+  --shadow-sm: 0 2px 8px rgba(13,59,56,0.08);
+  --shadow-md: 0 8px 32px rgba(13,59,56,0.12);
+  --shadow-lg: 0 16px 48px rgba(13,59,56,0.16);
+  --radius: 12px;
+  --radius-lg: 20px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--ivory);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* TYPOGRAPHY */
+.display { font-family: 'Cormorant Garamond', serif; }
+h1,h2,h3 { font-family: 'Cormorant Garamond', serif; line-height: 1.2; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 600; }
+h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 600; }
+h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 600; }
+p { font-family: 'Inter', sans-serif; }
+
+/* LAYOUT */
+.container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 80px 0; }
+.section-sm { padding: 48px 0; }
+
+/* STAFF DIVIDER – Signature element */
+.staff-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 auto 48px;
+  max-width: 320px;
+}
+.staff-divider::before, .staff-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: repeating-linear-gradient(
+    to right,
+    var(--gold) 0, var(--gold) 6px,
+    transparent 6px, transparent 12px
+  );
+}
+.staff-divider span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  color: var(--gold);
+  line-height: 1;
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--teal-deep);
+  color: var(--white);
+  box-shadow: 0 4px 16px rgba(13,59,56,0.3);
+}
+.btn-primary:hover { background: var(--teal-mid); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(13,59,56,0.35); }
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: var(--teal-deep);
+  box-shadow: 0 4px 16px rgba(201,168,76,0.3);
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.45); }
+.btn-whatsapp {
+  background: #25D366;
+  color: white;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.3);
+}
+.btn-whatsapp:hover { background: #1EBE5A; transform: translateY(-2px); }
+.btn-outline {
+  background: transparent;
+  color: var(--teal-deep);
+  border: 2px solid var(--teal-deep);
+}
+.btn-outline:hover { background: var(--teal-deep); color: white; }
+.btn-lg { padding: 18px 36px; font-size: 1.05rem; border-radius: 10px; }
+.btn-full { width: 100%; }
+
+/* ============================================
+   NAV
+============================================ */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250,248,244,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  padding: 16px 0;
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--teal-deep);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-logo-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--teal-deep);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 1.1rem;
+}
+.nav-links { display: flex; gap: 8px; align-items: center; }
+.nav-link {
+  font-size: 0.875rem;
+  color: var(--stone);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: var(--transition);
+  font-weight: 500;
+}
+.nav-link:hover { color: var(--teal-deep); background: var(--ivory-warm); }
+@media (max-width: 768px) {
+  .nav-links .hide-mobile { display: none; }
+}
+
+/* ============================================
+   HERO
+============================================ */
+.hero {
+  background: linear-gradient(160deg, var(--teal-deep) 0%, #1A4A47 60%, #0D3B38 100%);
+  color: white;
+  padding: 80px 0 100px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: var(--ivory);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--gold-light);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 24px;
+  letter-spacing: 0.02em;
+}
+.hero h1 { color: white; margin-bottom: 20px; }
+.hero h1 em { font-style: italic; color: var(--gold-light); }
+.hero-sub {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 36px;
+  line-height: 1.7;
+}
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+.hero-trust {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+}
+.trust-item .icon { color: var(--gold); font-size: 1rem; }
+.hero-visual { display: flex; justify-content: center; }
+.hero-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  width: 100%;
+  max-width: 380px;
+  backdrop-filter: blur(8px);
+}
+.hero-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: var(--gold-light);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.rating-display {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+}
+.stars { color: var(--gold); font-size: 1.2rem; letter-spacing: 2px; }
+.rating-num { font-size: 2rem; font-weight: 700; color: white; font-family: 'Cormorant Garamond', serif; }
+.rating-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.stat-box {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  display: block;
+}
+.stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.6); }
+
+/* ============================================
+   SOCIAL PROOF BAR
+============================================ */
+.proof-bar {
+  background: var(--ivory-warm);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  padding: 20px 0;
+}
+.proof-items {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.proof-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.875rem;
+  color: var(--stone);
+  font-weight: 500;
+}
+.proof-icon { color: var(--teal-mid); font-size: 1.1rem; }
+
+/* ============================================
+   WHY CHOOSE
+============================================ */
+.why { background: var(--ivory); }
+.section-header { text-align: center; margin-bottom: 56px; }
+.section-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal-mid);
+  margin-bottom: 12px;
+}
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 768px) { .benefit-grid { grid-template-columns: 1fr; } }
+@media (min-width: 600px) and (max-width: 768px) { .benefit-grid { grid-template-columns: 1fr 1fr; } }
+.benefit-card {
+  background: white;
+  border: 1px solid rgba(201,168,76,0.12);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal-deep), var(--teal-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: var(--transition);
+}
+.benefit-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.benefit-card:hover::before { transform: scaleX(1); }
+.benefit-icon {
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, rgba(13,59,56,0.08), rgba(13,59,56,0.04));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+}
+.benefit-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+.benefit-card p { font-size: 0.875rem; color: var(--stone); line-height: 1.6; }
+
+/* ============================================
+   CURRICULUM
+============================================ */
+.curriculum { background: var(--ivory-warm); }
+.modules-list { display: flex; flex-direction: column; gap: 10px; max-width: 800px; margin: 0 auto; }
+.module {
+  background: white;
+  border: 1px solid rgba(13,59,56,0.1);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: var(--transition);
+}
+.module-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+.module-header:hover { background: rgba(13,59,56,0.02); }
+.module-num {
+  width: 36px;
+  height: 36px;
+  background: var(--teal-deep);
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.module-title { flex: 1; font-weight: 500; font-size: 0.95rem; }
+.module-duration { font-size: 0.8rem; color: var(--stone); margin-right: 8px; }
+.module-chevron { color: var(--stone); font-size: 0.8rem; transition: var(--transition); }
+.module-body {
+  display: none;
+  padding: 0 20px 18px 72px;
+  font-size: 0.875rem;
+  color: var(--stone);
+  line-height: 1.7;
+}
+.module.open .module-chevron { transform: rotate(180deg); }
+.module.open .module-body { display: block; }
+
+/* FREE LESSON PREVIEW */
+.free-lesson-card {
+  max-width: 800px;
+  margin: 0 auto 32px;
+  background: white;
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-md);
+}
+.free-lesson-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(201,168,76,0.15);
+  color: var(--teal-deep);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+.free-lesson-card h3 { margin-bottom: 8px; }
+.free-lesson-card p { color: var(--stone); font-size: 0.95rem; margin-bottom: 20px; }
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--ink);
+}
+.video-wrapper iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+.module-free-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--teal-deep);
+  background: var(--gold-light);
+  padding: 3px 8px;
+  border-radius: 10px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+.link-curriculum {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--gold-light);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  margin-top: 12px;
+  padding: 4px;
+  transition: var(--transition);
+}
+.link-curriculum:hover { color: var(--white); }
+.curriculum-level {
+  margin-bottom: 28px;
+}
+.curriculum-level:last-child { margin-bottom: 0; }
+.curriculum-level h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  color: var(--teal-deep);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(201,168,76,0.3);
+}
+.curriculum-group { margin-bottom: 16px; }
+.curriculum-group:last-child { margin-bottom: 0; }
+.curriculum-group-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.curriculum-group ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.curriculum-group li {
+  font-size: 0.9rem;
+  color: var(--ink);
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.5;
+}
+.curriculum-group li::before {
+  content: '♪';
+  position: absolute;
+  left: 0;
+  color: var(--teal-light);
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   PRICING
+============================================ */
+.pricing { background: var(--teal-deep); }
+.pricing .section-eyebrow { color: var(--gold-light); }
+.pricing h2 { color: white; }
+.pricing .staff-divider::before, .pricing .staff-divider::after { background: repeating-linear-gradient(to right, rgba(201,168,76,0.5) 0, rgba(201,168,76,0.5) 6px, transparent 6px, transparent 12px); }
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+@media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; } }
+.price-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  position: relative;
+  transition: var(--transition);
+}
+.price-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.09); }
+.price-card.featured {
+  background: white;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold), 0 24px 64px rgba(201,168,76,0.2);
+  transform: scale(1.04);
+}
+.price-card.featured:hover { transform: scale(1.04) translateY(-4px); }
+@media (max-width: 900px) { .price-card.featured { transform: scale(1); } .price-card.featured:hover { transform: translateY(-4px); } }
+.featured-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: var(--teal-deep);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.price-plan-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+}
+.price-card.featured .price-plan-name { color: var(--stone); }
+.price-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 600;
+  color: white;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.price-card.featured .price-amount { color: var(--teal-deep); }
+.price-amount span { font-size: 1.4rem; vertical-align: super; font-weight: 400; }
+.price-breakdown {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 24px;
+}
+.price-card.featured .price-breakdown { color: var(--stone); }
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.price-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.8);
+}
+.price-card.featured .price-features li { color: var(--ink); }
+.price-features .check { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+.price-card.featured .price-features .check { color: var(--teal-deep); }
+.price-popular {
+  text-align: center;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 16px;
+}
+.price-card.featured .price-popular { color: var(--stone); }
+
+/* ============================================
+   TESTIMONIALS
+============================================ */
+.testimonials { background: var(--ivory); }
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 768px) { .testimonial-grid { grid-template-columns: 1fr; } }
+.testimonial-card {
+  background: white;
+  border: 1px solid rgba(201,168,76,0.12);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+}
+.testimonial-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 16px; letter-spacing: 3px; }
+.testimonial-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.author-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--teal-deep), var(--teal-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.author-name { font-weight: 600; font-size: 0.9rem; }
+.author-location { font-size: 0.78rem; color: var(--stone); }
+
+/* ============================================
+   FAQ
+============================================ */
+.faq { background: var(--ivory-warm); }
+.faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+.faq-item {
+  background: white;
+  border: 1px solid rgba(13,59,56,0.1);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  user-select: none;
+}
+.faq-question:hover { background: rgba(13,59,56,0.02); }
+.faq-icon {
+  width: 28px;
+  height: 28px;
+  background: var(--ivory-warm);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--teal-deep);
+  flex-shrink: 0;
+  transition: var(--transition);
+  font-weight: 300;
+}
+.faq-item.open .faq-icon { background: var(--teal-deep); color: white; transform: rotate(45deg); }
+.faq-answer {
+  display: none;
+  padding: 0 24px 20px;
+  font-size: 0.9rem;
+  color: var(--stone);
+  line-height: 1.7;
+}
+.faq-item.open .faq-answer { display: block; }
+
+/* ============================================
+   FINAL CTA
+============================================ */
+.final-cta {
+  background: linear-gradient(135deg, var(--teal-deep), #1A5C57);
+  color: white;
+  text-align: center;
+  padding: 80px 0;
+}
+.final-cta h2 { color: white; margin-bottom: 16px; }
+.final-cta p { color: rgba(255,255,255,0.75); max-width: 540px; margin: 0 auto 40px; }
+.final-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* ============================================
+   FOOTER
+============================================ */
+.footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.55);
+  padding: 40px 0 24px;
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 32px;
+}
+@media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr; gap: 24px; } }
+.footer-brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: white;
+  margin-bottom: 8px;
+}
+.footer-tagline { font-size: 0.85rem; margin-bottom: 16px; }
+.footer-col-title { color: white; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+.footer-links { display: flex; flex-direction: column; gap: 8px; }
+.footer-link { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.875rem; transition: var(--transition); }
+.footer-link:hover { color: var(--gold); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.8rem;
+}
+
+/* ============================================
+   STICKY MOBILE CTA
+============================================ */
+.sticky-cta {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: white;
+  border-top: 1px solid rgba(13,59,56,0.1);
+  padding: 12px 16px;
+  gap: 10px;
+  box-shadow: 0 -8px 32px rgba(0,0,0,0.1);
+}
+@media (max-width: 768px) { .sticky-cta { display: flex; } }
+.sticky-cta .btn { flex: 1; padding: 13px 16px; }
+
+/* ============================================
+   MODAL / CHECKOUT
+============================================ */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.active { display: flex; }
+.modal {
+  background: white;
+  border-radius: var(--radius-lg);
+  max-width: 480px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.modal-header {
+  padding: 28px 28px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.modal-header h3 { font-size: 1.4rem; color: var(--teal-deep); }
+.modal-plan-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(13,59,56,0.08);
+  color: var(--teal-deep);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 100px;
+  margin-bottom: 8px;
+}
+.modal-close {
+  background: var(--ivory-warm);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--stone);
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+.modal-close:hover { background: var(--ivory-warm); color: var(--ink); }
+.modal-body { padding: 20px 28px 28px; }
+.form-group { margin-bottom: 18px; }
+.form-label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 6px; color: var(--ink); }
+.form-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid rgba(13,59,56,0.15);
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: var(--transition);
+  background: var(--ivory);
+}
+.form-input:focus { border-color: var(--teal-mid); background: white; box-shadow: 0 0 0 3px rgba(46,139,132,0.1); }
+.form-input.error { border-color: #E53E3E; }
+.form-error { color: #E53E3E; font-size: 0.78rem; margin-top: 4px; }
+.checkout-summary {
+  background: var(--ivory-warm);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+.checkout-summary-plan { font-weight: 600; font-size: 0.95rem; margin-bottom: 4px; }
+.checkout-summary-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--teal-deep);
+}
+.form-consent {
+  font-size: 0.78rem;
+  color: var(--stone);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.form-consent a { color: var(--teal-mid); text-decoration: none; }
+
+/* ============================================
+   THANK YOU MODAL
+============================================ */
+.thankyou-content { text-align: center; padding: 48px 32px; }
+.thankyou-icon {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, #4CAF50, #45A049);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 24px;
+  box-shadow: 0 8px 32px rgba(76,175,80,0.3);
+}
+.thankyou-content h2 { font-size: 1.8rem; color: var(--teal-deep); margin-bottom: 12px; }
+.thankyou-content p { color: var(--stone); font-size: 0.925rem; line-height: 1.7; margin-bottom: 28px; }
+.thankyou-info {
+  background: var(--ivory-warm);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 24px;
+  text-align: left;
+  font-size: 0.875rem;
+}
+.thankyou-info strong { color: var(--teal-deep); }
+
+/* ============================================
+   LEGAL MODAL
+============================================ */
+.legal-content { padding: 20px 28px 28px; }
+.legal-content h4 { font-size: 1rem; margin: 20px 0 8px; color: var(--teal-deep); }
+.legal-content h4:first-child { margin-top: 0; }
+.legal-content p, .legal-content li { font-size: 0.875rem; color: var(--stone); line-height: 1.7; }
+.legal-content ul { padding-left: 20px; }
+
+/* ============================================
+   WHATSAPP FLOAT
+============================================ */
+.wa-float {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 50;
+  display: none;
+}
+@media (min-width: 769px) { .wa-float { display: block; } }
+.wa-float-btn {
+  width: 56px;
+  height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  text-decoration: none;
+  transition: var(--transition);
+}
+.wa-float-btn:hover { transform: scale(1.1); box-shadow: 0 8px 28px rgba(37,211,102,0.5); }
+.wa-pulse {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 16px;
+  height: 16px;
+  background: #E53E3E;
+  border-radius: 50%;
+  border: 2px solid white;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+/* ============================================
+   ANIMATIONS
+============================================ */
+.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.fade-up:nth-child(2) { transition-delay: 0.1s; }
+.fade-up:nth-child(3) { transition-delay: 0.2s; }
+.fade-up:nth-child(4) { transition-delay: 0.3s; }
+.fade-up:nth-child(5) { transition-delay: 0.4s; }
+.fade-up:nth-child(6) { transition-delay: 0.5s; }
+
+/* MISC */
+.text-center { text-align: center; }
+.mb-0 { margin-bottom: 0 !important; }
+.highlight { color: var(--teal-mid); }
+.gold { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">♪</div>
+        FluteRoom
+      </a>
+      <div class="nav-links">
+        <a href="#curriculum" class="nav-link hide-mobile">Lessons</a>
+        <a href="#pricing" class="nav-link hide-mobile">Pricing</a>
+        <a href="#testimonials" class="nav-link hide-mobile">Reviews</a>
+        <a href="#pricing" class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem;">Enroll Now</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          ✦ &nbsp; Trusted by 2000+ students across the world
+        </div>
+        <h1>Learn Flute From Home — <em>Even If You're a Complete Beginner</em></h1>
+        <p class="hero-sub">Master the basics through structured lessons, personal guidance, and step-by-step training designed specifically for beginners.</p>
+        <div class="hero-ctas">
+          <a href="#pricing" class="btn btn-gold btn-lg">Start Learning Today →</a>
+          <a href="https://wa.me/918709268496?text=Hello%2C%20I%27m%20interested%20in%20learning%20flute%20online.%20Can%20you%20tell%20me%20more%3F" target="_blank" class="btn btn-whatsapp btn-lg">💬 Chat on WhatsApp</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item"><span class="icon">✓</span> Lifetime Access</div>
+          <div class="trust-item"><span class="icon">✓</span> Watch Offline</div>
+          <div class="trust-item"><span class="icon">✓</span> Hindi</div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-title">♬ Student Results</div>
+          <div class="rating-display">
+            <div>
+              <div class="stars">★★★★★</div>
+              <div class="rating-label">Average Rating</div>
+            </div>
+            <div class="rating-num">4.9</div>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-box">
+              <span class="stat-num">2000+</span>
+              <span class="stat-label">Students Enrolled</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">13</span>
+              <span class="stat-label">Video Lessons</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">∞</span>
+              <span class="stat-label">Lifetime Access</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">97%</span>
+              <span class="stat-label">Satisfaction Rate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="container">
+    <div class="proof-items">
+      <div class="proof-item"><span class="proof-icon">🎵</span> 2000+ Happy Students</div>
+      <div class="proof-item"><span class="proof-icon">📱</span> Learn on Any Device</div>
+      <div class="proof-item"><span class="proof-icon">⬇️</span> Offline Download Available</div>
+      <div class="proof-item"><span class="proof-icon">🔐</span> Secure Razorpay Payments</div>
+      <div class="proof-item"><span class="proof-icon">📞</span> WhatsApp Support Available</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY CHOOSE -->
+<section class="why section" id="why">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Why This Program</span>
+      <h2>Everything Designed for <br>Your Success as a Beginner</h2>
+      <div class="staff-divider"><span>♩</span></div>
+    </div>
+    <div class="benefit-grid">
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon">🏠</div>
+        <h3>Learn From Home</h3>
+        <p>No commuting, no fixed schedules. Learn at your own pace from the comfort of your home, anytime that suits you.</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon">⏱️</div>
+        <h3>Learn at Your Own Pace</h3>
+        <p>Pause, rewind, and rewatch as many times as you need. Progress at a pace that works for you — no pressure, no rush.</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon">🎯</div>
+        <h3>Beginner-Friendly Teaching</h3>
+        <p>Every lesson is crafted assuming zero prior knowledge. Clear explanations, simple language, and gradual progression.</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon">♾️</div>
+        <h3>Lifetime Access</h3>
+        <p>Pay once and access your lessons forever. Come back anytime — even months later — and your content will be waiting.</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon">💬</div>
+        <h3>Personalized Support</h3>
+        <p>Get direct WhatsApp access to your instructor for doubt clearing, custom solution videos, and personalized guidance.</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon">🎼</div>
+        <h3>Practical Learning</h3>
+        <p>You learn by doing — not just watching. Each lesson includes practical exercises that build real skill on the flute.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section class="curriculum section" id="curriculum">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Complete Curriculum</span>
+      <h2>13 Step-by-Step Lessons to <br>Take You from Zero to Playing</h2>
+      <div class="staff-divider"><span>♩</span></div>
+    </div>
+    <div class="free-lesson-card fade-up">
+      <div class="free-lesson-badge">▶ Free Preview</div>
+      <h3>Watch Chapter 1 — Free</h3>
+      <p>See exactly how the course is taught before you enroll. Watch the full first lesson below, no payment needed.</p>
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/QfBTa2Oq1rw" title="Chapter  01 for Free Preview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="modules-list">
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <div class="module-num">01</div>
+          <div class="module-title">Introduction & How to select best flute for yourself</div>
+          <span class="module-free-tag">Free</span>
+          <span class="module-duration">~03:45 min</span>
+          <span class="module-chevron">▾</span>
+        </div>
+        <div class="module-body">
+          <p>Learn how to select the perfect flute based on your age, hand size, and learning goals.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <div class="module-num">02</div>
+          <div class="module-title">How to Practice flute Correctly</div>
+          <span class="module-duration">~01:16 min</span>
+          <span class="module-chevron">▾</span>
+        </div>
+        <div class="module-body">
+          <p>Build an effective practice routine to progress faster and avoid common mistakes.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <div class="module-num">03</div>
+          <div class="module-title">Your First Sound — Blowing Techniques and Flute Basics</div>
+          <span class="module-duration">~04:18 min</span>
+          <span class="module-chevron">▾</span>
+        </div>
+        <div class="module-body">
+          <p>Master the fundamentals of blowing and produce your first clear flute sound.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <div class="module-num">04</div>
+          <div class="module-title">How to hold the flute correctly</div>
+          <span class="module-duration">~09:36 min</span>
+          <span class="module-chevron">▾</span>
+        </div>
+        <div class="module-body">
+          <p>Learn proper hand positioning and posture for comfortable, effortless playing.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <div class="module-num">05</div>
+          <div class="module-title">How to Produce sound form each hole (Sound Production)</div>
+          <span class="module-duration">~07:09 min</span>
+          <span class="module-chevron">▾</span>
+        </div>
+        <div class="module-body">
+          <p>Develop control and clarity while producing clean notes from each finger hole.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <div class="module-num">06</div>
+          <div class="module-title">Octave & Breathing Control</div>
+          <span class="module-duration">~08:54 min</span>
+          <span class="module-chevron">▾</span>
+        </div>
+        <div class="module-body">
+          <p>Understand octave shifting and improve breath control for smoother playing.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <div class="module-num">07</div>
+          <div class="module-title">How to play sargam in flute (Sa, Re, Ga...)</div>
+          <span class="module-duration">~06:26 min</span>
+          <span class="module-chevron">▾</span>
+        </div>
+        <div class="module-body">
+          <p>Learn the basic Indian musical notes and start playing simple patterns.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <div class="module-num">08</div>
+          <div class="module-title">How to play sudh MA properly</div>
+          <span class="module-duration">~06:17 min</span>
+          <span class="module-chevron">▾</span>
+        </div>
+        <div class="module-body">
+          <p>Master the correct fingering and technique for a clear Shudh Ma.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <div class="module-num">09</div>
+          <div class="module-title">What is alankaars & how to play them on flute</div>
+          <span class="module-duration">~07:22 min</span>
+          <span class="module-chevron">▾</span>
+        </div>
+        <div class="module-body">
+          <p>Practice essential exercises that improve finger speed, accuracy, and fluency.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <div class="module-num">10</div>
+          <div class="module-title">Understanding Rhythm, Metronome & Beats</div>
+          <span class="module-duration">~06:43 min</span>
+          <span class="module-chevron">▾</span>
+        </div>
+        <div class="module-body">
+          <p>Develop a strong sense of timing and learn to play in rhythm confidently.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <div class="module-num">11</div>
+          <div class="module-title">How to play komal swar correctly</div>
+          <span class="module-duration">~04:45 min</span>
+          <span class="module-chevron">▾</span>
+        </div>
+        <div class="module-body">
+          <p>Learn the techniques required to play flat notes accurately and consistently.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <div class="module-num">12</div>
+          <div class="module-title">How to Play Chromatic Scale</div>
+          <span class="module-duration">~02:46 min</span>
+          <span class="module-chevron">▾</span>
+        </div>
+        <div class="module-body">
+          <p>Expand your note range and gain greater control over the flute.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <div class="module-num">13</div>
+          <div class="module-title">How to do Tonguing (Tatkaar)</div>
+          <span class="module-duration">~04:59 min</span>
+          <span class="module-chevron">▾</span>
+        </div>
+        <div class="module-body">
+          <p>Learn articulation techniques to make your playing cleaner, sharper, and more expressive.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="#pricing" class="btn btn-primary btn-lg">Enroll Now — Watch Free Lesson →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing section" id="pricing">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-eyebrow">Simple, Honest Pricing</span>
+      <h2 style="color:white;">Choose the Plan That <br>Fits Your Learning Style</h2>
+      <div class="staff-divider"><span>♩</span></div>
+      <p style="color:rgba(255,255,255,0.65);max-width:500px;margin:0 auto;">Every plan includes the complete 13-lesson video course with lifetime access. Choose how much support you want.</p>
+    </div>
+    <div class="pricing-grid">
+      <!-- Plan 1 -->
+      <div class="price-card fade-up">
+        <div class="price-plan-name">Course Only</div>
+        <div class="price-amount"><span>₹</span>699</div>
+        <div class="price-breakdown">One-time payment · Lifetime access</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span> 13 Recorded Video Lessons</li>
+          <li><span class="check">✓</span> Free PDF Guide</li>
+          <li><span class="check">✓</span> Lifetime Access</li>
+          <li><span class="check">✓</span> Offline Download Available</li>
+          <li><span class="check">✓</span> Watch Without Internet</li>
+          <li><span class="check">✓</span> Beginner Friendly Curriculum</li>
+        </ul>
+        <button class="btn btn-outline btn-full" style="color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.3);" onclick="openCheckout('plan1', '₹699', 699, 'Course Only')">Buy Now</button>
+      </div>
+
+      <!-- Plan 2 FEATURED -->
+      <div class="price-card featured fade-up">
+        <div class="featured-badge">⭐ Most Recommended</div>
+        <div class="price-plan-name">Course + Support</div>
+        <div class="price-amount" style="color:var(--teal-deep);"><span>₹</span>1098</div>
+        <div class="price-breakdown">Course ₹699 + WhatsApp Support ₹399/mo</div>
+        <div class="price-popular">👥 Most Students Choose This Plan</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Everything in Course Plan</li>
+          <li><span class="check">✓</span> WhatsApp Doubt Support</li>
+          <li><span class="check">✓</span> Personalized Guidance</li>
+          <li><span class="check">✓</span> Custom Solution Videos</li>
+          <li><span class="check">✓</span> Priority Responses</li>
+          <li><span class="check">✓</span> Call Support When Needed</li>
+        </ul>
+        <button class="btn btn-gold btn-full" onclick="openCheckout('plan2', '₹1098', 1098, 'Course + WhatsApp Support')">Get Support Plan</button>
+      </div>
+
+      <!-- Plan 3 -->
+      <div class="price-card fade-up">
+        <div class="price-plan-name">Premium Mentorship</div>
+        <div class="price-amount"><span>₹</span>3998</div>
+        <div class="price-breakdown">Course ₹699 + Live Classes & Support ₹3299/mo</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Everything in Support Plan</li>
+          <li><span class="check">✓</span> 4 Live One-on-One Classes</li>
+          <li><span class="check">✓</span> Personalized Feedback</li>
+          <li><span class="check">✓</span> Performance Review</li>
+          <li><span class="check">✓</span> Direct Mentorship</li>
+          <li><span class="check">✓</span> Custom Learning Roadmap</li>
+          <li><span class="check">✓</span> Flexible Scheduling</li>
+        </ul>
+        <button class="btn btn-gold btn-full" onclick="openCheckout('plan3', '₹3998', 3998, 'Premium Mentorship')">Join Premium Plan</button>
+        <button class="link-curriculum" onclick="openCurriculum()">📋 View Live Class Curriculum</button>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:32px;color:rgba(255,255,255,0.4);font-size:0.8rem;">🔐 Secured by Razorpay · UPI, Cards, Net Banking Accepted</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials section" id="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Student Reviews</span>
+      <h2>Real Students, Real Results</h2>
+      <div class="staff-divider"><span>♩</span></div>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"I always dreamed of playing the flute but thought it was too hard. This course changed everything. Within 3 weeks I could play my first bhajan. The explanations are so clear and patient."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">P</div>
+          <div>
+            <div class="author-name">Priya Sharma</div>
+            <div class="author-location">Dubai · Course Only Plan</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"The WhatsApp support is genuinely worth it. Whenever I was stuck on a note or a technique, I got a personalized video reply. Felt like I had a personal teacher available 24/7."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">R</div>
+          <div>
+            <div class="author-name">Rahul Mehta</div>
+            <div class="author-location">Mumbai · Course + Support Plan</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"The live one-on-one sessions in the Premium plan are exceptional. My teacher identified my exact weaknesses in the very first session and my playing improved dramatically within a month."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">A</div>
+          <div>
+            <div class="author-name">Anita Rao</div>
+            <div class="author-location">Bangalore · Premium Mentorship</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"I tried YouTube videos before and got confused. This course has structure — you build from one thing to the next. The PDF guide alone is worth the price. Absolutely recommend to anyone starting out."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">S</div>
+          <div>
+            <div class="author-name">Suresh Kumar</div>
+            <div class="author-location">Hyderabad · Course Only Plan</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"The offline download feature is a game changer. I practice during my commute and on trips without needing WiFi. Truly lifetime access — I revisit lessons I took months ago and learn something new each time."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">M</div>
+          <div>
+            <div class="author-name">Meena Patel</div>
+            <div class="author-location">Ahmedabad · Course + Support Plan</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"Being a housewife, I never had time for music classes. This course lets me learn during my free time. The beginner-friendly approach and patient teaching made my dream of playing flute a reality."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">K</div>
+          <div>
+            <div class="author-name">Kavita Singh</div>
+            <div class="author-location">Netherland · Course Only Plan</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq section" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Frequently Asked Questions</span>
+      <h2>Everything You Need to Know</h2>
+      <div class="staff-divider"><span>♩</span></div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          How long does it take to learn flute?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          With consistent daily practice of 20–30 minutes, most beginners can play simple melodies within 4–6 weeks of starting this course. To reach an intermediate level where you can play full songs fluently, expect 3–6 months of regular practice. Progress varies by individual — the most important thing is consistency.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Do I need prior experience or music knowledge?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Absolutely not. This course is designed from the ground up for complete beginners — people who have never played any instrument before. We start from holding the flute correctly and explain everything step-by-step. No music theory background is required.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Can I watch lessons offline?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Yes! All video lessons can be downloaded for offline viewing. Once downloaded, you can watch them anytime without an internet connection — perfect for practicing during travel or in areas with poor connectivity.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          How will I receive my course after purchase?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Immediately after your payment is confirmed, you'll receive an email with your course access link and instructions IF NOT. You can also contact us on WhatsApp with your payment details and we'll activate your access manually within a few Minutes. All content is hosted on a secure platform you can access from any device.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          How does WhatsApp support work?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          After purchasing the Course + Support or Premium plan, you'll be added to a dedicated WhatsApp conversation with your instructor. You can send voice notes, videos of your playing, or text your questions — and receive personalized replies, explanations, or custom short videos addressing your specific issue. Support is available 7 days a week.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          How do the live one-on-one classes work?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          The Premium Mentorship plan includes 4 live one-on-one sessions per month conducted via video call (Google Meet / Zoom / WhatsApp video). After purchase, you'll coordinate directly with your instructor to schedule sessions at a time convenient for you. Each session is typically 45–60 minutes, focused entirely on your individual progress and challenges.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Is this course truly beginner friendly?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Yes — that's the core promise of this program. Every lesson is scripted and paced for someone who has never touched a flute. We use clear Hindi and simple English explanations, demonstrate every technique multiple times, and anticipate the exact mistakes beginners make. If over 500 students have successfully started their flute journey here, so can you.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>Your Flute Journey Starts Today</h2>
+    <p>Join 2000+ students who chose to stop waiting and start playing. Lifetime access. No prior experience needed. Start in minutes.</p>
+    <div class="final-cta-btns">
+      <a href="#pricing" class="btn btn-gold btn-lg">Start Learning Today →</a>
+      <a href="https://wa.me/918709268496?text=Hello%2C%20I%27m%20interested%20in%20learning%20flute%20online.%20Can%20you%20tell%20me%20more%3F" target="_blank" class="btn btn-whatsapp btn-lg">💬 Chat on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">♪ FluteRoom</div>
+        <p class="footer-tagline">Learn flute from home. Structured lessons designed for absolute beginners across the world.</p>
+        <p style="font-size:0.8rem;">📞 WhatsApp: +91-87092-68496<br>📧 prateek132008@gmail.com</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <div class="footer-links">
+          <a href="#curriculum" class="footer-link">Curriculum</a>
+          <a href="#pricing" class="footer-link">Pricing</a>
+          <a href="#testimonials" class="footer-link">Reviews</a>
+          <a href="#faq" class="footer-link">FAQ</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <div class="footer-links">
+          <a href="#" class="footer-link" onclick="openLegal('privacy')">Privacy Policy</a>
+          <a href="#" class="footer-link" onclick="openLegal('terms')">Terms & Conditions</a>
+          <a href="#" class="footer-link" onclick="openLegal('refund')">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 FluteRoom. All rights reserved.</span>
+      <span>Payments secured by Razorpay 🔐</span>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta">
+  <a href="https://wa.me/918709268496?text=Hello%2C%20I%27m%20interested%20in%20the%20flute%20course." target="_blank" class="btn btn-whatsapp">💬 WhatsApp</a>
+  <a href="#pricing" class="btn btn-primary">Enroll Now →</a>
+</div>
+
+<!-- WHATSAPP FLOAT -->
+<div class="wa-float">
+  <a href="https://wa.me/918709268496?text=Hello%2C%20I%27m%20interested%20in%20the%20flute%20course." target="_blank" class="wa-float-btn">💬</a>
+  <div class="wa-pulse"></div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-plan-badge" id="modalPlanBadge">Plan</div>
+        <h3>Complete Your Enrollment</h3>
+      </div>
+      <button class="modal-close" onclick="closeCheckout()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="checkout-summary">
+        <div class="checkout-summary-plan" id="summaryPlan">Course Only</div>
+        <div class="checkout-summary-price" id="summaryPrice">₹699</div>
+      </div>
+      <form id="checkoutForm" onsubmit="return false;">
+        <div class="form-group">
+          <label class="form-label" for="fullName">Full Name *</label>
+          <input type="text" id="fullName" class="form-input" placeholder="Your full name" autocomplete="name">
+          <div class="form-error" id="nameError"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address *</label>
+          <input type="email" id="email" class="form-input" placeholder="your@email.com" autocomplete="email">
+          <div class="form-error" id="emailError"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="whatsapp">WhatsApp Number *</label>
+          <input type="tel" id="whatsapp" class="form-input" placeholder="+91 99999 99999" autocomplete="tel">
+          <div class="form-error" id="phoneError"></div>
+        </div>
+        <p class="form-consent">By enrolling, you agree to our <a href="#" onclick="openLegal('terms')">Terms & Conditions</a>, <a href="#" onclick="openLegal('privacy')">Privacy Policy</a>, and <a href="#" onclick="openLegal('refund')">Refund Policy</a>.</p>
+        <button type="button" class="btn btn-primary btn-full btn-lg" id="payBtn" onclick="initiatePayment()">Proceed to Pay</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- THANK YOU MODAL -->
+<div class="modal-overlay" id="thankyouModal">
+  <div class="modal">
+    <div class="thankyou-content" id="thankyouContent">
+      <!-- Filled dynamically -->
+    </div>
+  </div>
+</div>
+
+<!-- LEGAL MODAL -->
+<div class="modal-overlay" id="legalModal">
+  <div class="modal" style="max-width:640px;">
+    <div class="modal-header">
+      <h3 id="legalTitle">Policy</h3>
+      <button class="modal-close" onclick="closeLegal()">✕</button>
+    </div>
+    <div class="legal-content" id="legalContent"></div>
+  </div>
+</div>
+
+<!-- CURRICULUM MODAL -->
+<div class="modal-overlay" id="curriculumModal">
+  <div class="modal" style="max-width:640px;max-height:85vh;overflow-y:auto;">
+    <div class="modal-header">
+      <h3>Live Class Curriculum</h3>
+      <button class="modal-close" onclick="closeCurriculum()">✕</button>
+    </div>
+    <div class="legal-content">
+      <div class="curriculum-level">
+        <h4>Beginner Level</h4>
+        <div class="curriculum-group">
+          <div class="curriculum-group-title">Introduction to Flute Playing</div>
+          <ul>
+            <li>Blowing techniques</li>
+            <li>Correct posture and how to hold the flute</li>
+            <li>Producing sound from each hole</li>
+          </ul>
+        </div>
+        <div class="curriculum-group">
+          <div class="curriculum-group-title">Basic Concepts</div>
+          <ul>
+            <li>Understanding Octaves</li>
+            <li>Playing Sargam (Sa Re Ga Ma Pa Dha Ni Sa)</li>
+            <li>Playing Sudh Ma</li>
+          </ul>
+        </div>
+        <div class="curriculum-group">
+          <div class="curriculum-group-title">Practice Exercises</div>
+          <ul>
+            <li>Introduction to Alankars (patterns for fluency)</li>
+            <li>Use of Metronome (keeping rhythm & beat)</li>
+            <li>Theory: What is Scale</li>
+            <li>Why Different Sizes of Flute are Used</li>
+            <li>Introduction to Tanpura</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="curriculum-level">
+        <h4>Intermediate Level</h4>
+        <div class="curriculum-group">
+          <div class="curriculum-group-title">Advanced Notes</div>
+          <ul>
+            <li>Komal Swars (with Alankars)</li>
+            <li>Chromatic Scale practice</li>
+          </ul>
+        </div>
+        <div class="curriculum-group">
+          <div class="curriculum-group-title">Ornamentation Techniques</div>
+          <ul>
+            <li>Meend</li>
+            <li>Gamak</li>
+            <li>Kan Swars</li>
+            <li>Aakaar</li>
+            <li>Murki</li>
+            <li>Khatka</li>
+            <li>Zamzamma</li>
+          </ul>
+        </div>
+        <div class="curriculum-group">
+          <div class="curriculum-group-title">Articulation (Tatkaar / Tonguing)</div>
+          <ul>
+            <li>Introduction to Tonguing</li>
+            <li>Basic exercise</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="curriculum-level">
+        <h4>Application Level</h4>
+        <div class="curriculum-group">
+          <div class="curriculum-group-title">Songs & Tunes</div>
+          <ul>
+            <li>Learning Famous Bollywood Songs</li>
+            <li>Learning Popular Flute Tunes (e.g., OMG Flute Theme)</li>
+            <li>Learning Devotional Bhajans</li>
+          </ul>
+        </div>
+        <div class="curriculum-group">
+          <div class="curriculum-group-title">Detailing & Expression</div>
+          <ul>
+            <li>Combining Tonguing + Ornamentation for Detailing</li>
+            <li>Controlling Sound</li>
+            <li>Scale Shifting & Modulation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// =============================================
+// CONFIGURATION — Update these values
+// =============================================
+const CONFIG = {
+  RAZORPAY_KEY: 'rzp_test_SdLEnL0lYIFFpw',
+  WHATSAPP_NUMBER: '918709268496',
+  BUSINESS_NAME: 'FluteRoom',
+  SHEETS_WEBHOOK_URL: 'https://script.google.com/macros/s/AKfycbwQD9cl-ThCl5tQcm8Ss-O6sOOV_PRGLDY0UXOHXkI0WLnqyrRRe8sM5XZxc2Nix9EmfQ/exec',
+  EMAIL_WEBHOOK_URL: 'https://script.google.com/macros/s/AKfycbwQD9cl-ThCl5tQcm8Ss-O6sOOV_PRGLDY0UXOHXkI0WLnqyrRRe8sM5XZxc2Nix9EmfQ/exec',
+};
+
+// =============================================
+// CHECKOUT STATE
+// =============================================
+let currentPlan = null;
+let purchaseCompleted = false; // Prevent duplicate pixel events
+
+function openCheckout(planId, priceDisplay, amount, planName) {
+  currentPlan = { id: planId, price: priceDisplay, amount, name: planName };
+  document.getElementById('modalPlanBadge').textContent = planName;
+  document.getElementById('summaryPlan').textContent = planName;
+  document.getElementById('summaryPrice').textContent = priceDisplay;
+  document.getElementById('checkoutModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  purchaseCompleted = false;
+}
+
+function closeCheckout() {
+  document.getElementById('checkoutModal').classList.remove('active');
+  document.body.style.overflow = '';
+  document.getElementById('checkoutForm').reset();
+  clearErrors();
+}
+
+function clearErrors() {
+  ['nameError','emailError','phoneError'].forEach(id => {
+    document.getElementById(id).textContent = '';
+  });
+  ['fullName','email','whatsapp'].forEach(id => {
+    document.getElementById(id).classList.remove('error');
+  });
+}
+
+function validateForm() {
+  let valid = true;
+  clearErrors();
+
+  const name = document.getElementById('fullName').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('whatsapp').value.trim();
+
+  if (!name || name.length < 2) {
+    document.getElementById('nameError').textContent = 'Please enter your full name';
+    document.getElementById('fullName').classList.add('error');
+    valid = false;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email || !emailRegex.test(email)) {
+    document.getElementById('emailError').textContent = 'Please enter a valid email address';
+    document.getElementById('email').classList.add('error');
+    valid = false;
+  }
+
+  const phoneDigits = phone.replace(/\D/g, '');
+  if (!phone || phoneDigits.length < 10) {
+    document.getElementById('phoneError').textContent = 'Please enter a valid WhatsApp number';
+    document.getElementById('whatsapp').classList.add('error');
+    valid = false;
+  }
+
+  return valid;
+}
+
+function initiatePayment() {
+  if (!validateForm()) return;
+
+  const name = document.getElementById('fullName').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('whatsapp').value.trim();
+  const btn = document.getElementById('payBtn');
+
+  btn.textContent = 'Opening Payment...';
+  btn.disabled = true;
+
+  const options = {
+    key: CONFIG.RAZORPAY_KEY,
+    amount: currentPlan.amount * 100,
+    currency: 'INR',
+    name: CONFIG.BUSINESS_NAME,
+    description: currentPlan.name,
+    prefill: { name: name, email: email, contact: phone },
+    theme: { color: '#0D3B38' },
+    modal: {
+      ondismiss: function() {
+        btn.textContent = 'Proceed to Pay';
+        btn.disabled = false;
+      }
+    },
+    handler: function(response) {
+      btn.textContent = 'Payment Successful!';
+      onPaymentSuccess(response, { name, email, phone });
+    }
+  };
+
+  try {
+    const rzp = new Razorpay(options);
+    rzp.on('payment.failed', function(response) {
+      btn.textContent = 'Proceed to Pay';
+      btn.disabled = false;
+      alert('Payment failed. Please try again. Error: ' + response.error.description);
+    });
+    rzp.open();
+  } catch(err) {
+    btn.textContent = 'Proceed to Pay';
+    btn.disabled = false;
+    alert('Could not open payment. Please check your internet connection and try again.');
+    console.error('Razorpay error:', err);
+  }
+}
+
+function onPaymentSuccess(response, userData) {
+  const paymentData = {
+    timestamp: new Date().toISOString(),
+    name: userData.name,
+    email: userData.email,
+    whatsapp: userData.phone,
+    plan: currentPlan.name,
+    amount: currentPlan.amount,
+    paymentId: response.razorpay_payment_id || 'N/A',
+    status: 'Success'
+  };
+
+  // Save to Google Sheets
+  saveToSheets(paymentData);
+
+  // Send confirmation email
+  sendConfirmationEmail(paymentData);
+
+  // Fire Meta Pixel Purchase event (only once)
+  if (!purchaseCompleted) {
+    purchaseCompleted = true;
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'Purchase', {
+        value: currentPlan.amount,
+        currency: 'INR',
+        content_name: currentPlan.name,
+        content_type: 'product'
+      });
+    }
+  }
+
+  // Close checkout, show thank you
+  closeCheckout();
+  showThankYou(paymentData);
+}
+
+async function saveToSheets(data) {
+  try {
+    await fetch(CONFIG.SHEETS_WEBHOOK_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  } catch (e) {
+    console.error('Sheets save failed:', e);
+  }
+}
+
+async function sendConfirmationEmail(data) {
+  try {
+    await fetch(CONFIG.EMAIL_WEBHOOK_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...data, action: 'send_email' })
+    });
+  } catch (e) {
+    console.error('Email send failed:', e);
+  }
+}
+
+function showThankYou(data) {
+  const messages = {
+    plan1: {
+      title: 'Welcome to FluteRoom!',
+      body: 'Your purchase was successful. Your course access link has been sent to your email. If you do not receive it within a few minutes, contact us on WhatsApp.',
+      waMsg: `Hello, I purchased the Course Only Plan (Payment ID: ${data.paymentId}). Please share my course access link. My name is ${data.name}.`
+    },
+    plan2: {
+      title: 'Welcome to FluteRoom!',
+      body: 'Your purchase was successful. Your course access link has been sent to your email. Your WhatsApp support access will be activated shortly.',
+      waMsg: `Hello, I purchased the Course + WhatsApp Support Plan (Payment ID: ${data.paymentId}). Please share my course access link and activate my WhatsApp support. My name is ${data.name}.`
+    },
+    plan3: {
+      title: 'Welcome to Your Premium Journey!',
+      body: 'Your purchase was successful. Your course access link has been sent to your email. Your WhatsApp support and live class access will be activated soon.',
+      waMsg: `Hello, I purchased the Premium Mentorship Plan (Payment ID: ${data.paymentId}). Please share my course access link, activate my support, and guide me regarding scheduling my live classes. My name is ${data.name}.`
+    }
+  };
+
+  const msg = messages[currentPlan.id] || messages.plan1;
+  const waLink = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(msg.waMsg)}`;
+
+  document.getElementById('thankyouContent').innerHTML = `
+    <div class="thankyou-icon">✓</div>
+    <h2>${msg.title}</h2>
+    <p>${msg.body}</p>
+    <div class="thankyou-info">
+      <p><strong>Name:</strong> ${data.name}</p>
+      <p><strong>Plan:</strong> ${data.plan}</p>
+      <p><strong>Amount Paid:</strong> ₹${data.amount}</p>
+      <p><strong>Payment ID:</strong> ${data.paymentId}</p>
+    </div>
+    <a href="${waLink}" target="_blank" class="btn btn-whatsapp btn-full btn-lg" style="margin-bottom:12px;">💬 Contact on WhatsApp for Access</a>
+    <button class="btn btn-outline btn-full" onclick="closeThankyou()">Close</button>
+  `;
+
+  document.getElementById('thankyouModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeThankyou() {
+  document.getElementById('thankyouModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// =============================================
+// LEGAL PAGES
+// =============================================
+const legalContent = {
+  privacy: {
+    title: 'Privacy Policy',
+    content: `
+      <p><strong>Last updated:</strong> January 2025</p>
+      <h4>1. Information We Collect</h4>
+      <p>When you purchase or inquire about our courses, we collect your full name, email address, WhatsApp number, and payment information (processed securely by Razorpay — we do not store card details).</p>
+      <h4>2. How We Use Your Information</h4>
+      <ul>
+        <li>To provide course access and activate support features</li>
+        <li>To send purchase confirmation and course access emails</li>
+        <li>To provide WhatsApp support and live class coordination</li>
+        <li>To improve our services and respond to inquiries</li>
+      </ul>
+      <h4>3. Data Sharing</h4>
+      <p>We do not sell, trade, or rent your personal information to third parties. We share data only with service providers necessary to deliver our services (Razorpay for payments, email service providers for automated communications).</p>
+      <h4>4. Data Storage</h4>
+      <p>Your purchase data is stored securely in Google Sheets accessible only to our team. WhatsApp conversations are handled through the WhatsApp platform under their privacy policy.</p>
+      <h4>5. Your Rights</h4>
+      <p>You may request deletion of your personal data at any time by contacting us on WhatsApp or email. We will process requests within 7 business days.</p>
+      <h4>6. Contact</h4>
+      <p>For privacy concerns, contact us at prateek132008@gmail.com or via WhatsApp.</p>
+    `
+  },
+  terms: {
+    title: 'Terms & Conditions',
+    content: `
+      <p><strong>Last updated:</strong> January 2025</p>
+      <h4>1. Course Access</h4>
+      <p>Upon successful payment, you will receive lifetime access to the purchased course content. Access is granted to a single individual and is non-transferable.</p>
+      <h4>2. WhatsApp Support</h4>
+      <p>WhatsApp support (Course + Support plan) provides one month of doubt-clearing support via WhatsApp. Support is available 7 days a week with responses within 24 hours. Custom solution videos are provided at the instructor's discretion.</p>
+      <h4>3. Live Classes (Premium Plan)</h4>
+      <p>Premium Mentorship includes 4 live one-on-one sessions per month conducted via video call. Sessions must be scheduled in advance and are subject to instructor availability. Missed sessions must be rescheduled within the same month.</p>
+      <h4>4. Intellectual Property</h4>
+      <p>All course content, videos, and PDF materials are the intellectual property of FluteRoom. Sharing, distributing, or reselling course content is strictly prohibited and may result in immediate access termination.</p>
+      <h4>5. Code of Conduct</h4>
+      <p>Students are expected to engage respectfully with instructors. Abusive or inappropriate behavior via WhatsApp or during live sessions will result in immediate termination of access without refund.</p>
+      <h4>6. Limitation of Liability</h4>
+      <p>FluteRoom is not responsible for technical issues on the student's device or internet connection. We will make reasonable efforts to provide alternative access in case of platform issues.</p>
+    `
+  },
+  refund: {
+    title: 'Refund Policy',
+    content: `
+      <p><strong>Last updated:</strong> January 2025</p>
+      <h4>Our Commitment</h4>
+      <p>We are committed to providing a high-quality learning experience. Please read this Refund Policy carefully before making a purchase, as different plans have different refund conditions.</p>
+      <h4>Course Only Plan (₹699)</h4>
+      <p>The Course Only Plan includes instant access to digital course materials delivered through a Google Drive link and downloadable resources.
+
+<strong>No refunds will be issued once course access has been provided.<strong>
+
+Due to the digital nature of the product, course access cannot be revoked, retrieved, or returned after delivery. Therefore, all course purchases are final and non-refundable once the Google Drive access link has been shared.</p>
+      <h4>Course + WhatsApp Support Plan (₹1098)</h4>
+      <p>This plan includes course access and WhatsApp support.
+
+Refund Eligibility
+
+A refund request may be submitted within 3 days of purchase only if:
+
+No WhatsApp support has been used or initiated.
+No questions, guidance requests, or support interactions have been received through WhatsApp.
+Non-Refundable Cases
+
+No refund will be issued if:
+
+Any WhatsApp support has been used, even once.
+The refund request is made after 3 days from the purchase date.
+Course access has already been provided (course fee remains non-refundable).</p>
+      <h4>Premium Mentorship Plan (₹3998)</h4>
+      <p>This plan includes course access, WhatsApp support, and live mentorship classes.
+
+Refund Eligibility
+
+A refund request may be submitted within 3 days of purchase.
+
+If live classes have already been conducted, the refund amount will be calculated after deducting the value of each attended or scheduled live class.
+
+Deduction Rate: ₹725 per live class.
+
+Example
+
+If 2 live classes have been conducted:
+
+Refund Amount = ₹3998 − (₹725 × 2)</p>
+      <h4>Non-Refundable Cases</h4>
+      <ul>
+        <li>The refund request is submitted after 3 days from the purchase date.</li>
+        <li>WhatsApp support has been used even once.</li>
+        <li>Change of mind after accessing a significant portion of content</li>
+      </ul>
+      <h4>Refund Process</h4>
+      <p>To request a refund, please contact us within the applicable refund period and provide:
+
+Full Name
+Registered Email Address
+Registered Mobile Number
+Payment ID / Transaction ID
+Screenshot of Payment Confirmation
+Reason for Refund Request
+
+Refund requests can be submitted via:
+
+Email: prateek132008@gmail.com
+WhatsApp: +918709268496</p>
+    `
+  }
+};
+
+function openLegal(type) {
+  const data = legalContent[type];
+  document.getElementById('legalTitle').textContent = data.title;
+  document.getElementById('legalContent').innerHTML = data.content;
+  document.getElementById('legalModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLegal() {
+  document.getElementById('legalModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// =============================================
+// CURRICULUM MODAL
+// =============================================
+function openCurriculum() {
+  document.getElementById('curriculumModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCurriculum() {
+  document.getElementById('curriculumModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// =============================================
+// ACCORDION — MODULES & FAQ
+// =============================================
+function toggleModule(header) {
+  const module = header.closest('.module');
+  module.classList.toggle('open');
+}
+
+function toggleFaq(question) {
+  const item = question.closest('.faq-item');
+  // Close others
+  document.querySelectorAll('.faq-item.open').forEach(f => {
+    if (f !== item) f.classList.remove('open');
+  });
+  item.classList.toggle('open');
+}
+
+// =============================================
+// CLOSE MODALS ON OVERLAY CLICK
+// =============================================
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', function(e) {
+    if (e.target === this) {
+      this.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+});
+
+// =============================================
+// SCROLL ANIMATIONS
+// =============================================
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// =============================================
+// HIDE STICKY CTA NEAR FOOTER
+// =============================================
+const stickyCta = document.querySelector('.sticky-cta');
+const footer = document.querySelector('.footer');
+if (stickyCta && footer) {
+  const footerObserver = new IntersectionObserver((entries) => {
+    stickyCta.style.display = entries[0].isIntersecting ? 'none' : '';
+  }, { threshold: 0 });
+  footerObserver.observe(footer);
+}
+</script>
+</body>
+</html>
