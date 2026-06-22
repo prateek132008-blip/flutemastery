@@ -635,6 +635,32 @@ p { font-family: 'Inter', sans-serif; }
 }
 .price-card.featured .price-amount { color: var(--teal-deep); }
 .price-amount span { font-size: 1.4rem; vertical-align: super; font-weight: 400; }
+.price-original-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 2px;
+}
+.price-original {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  text-decoration: line-through;
+}
+.price-card.featured .price-original { color: var(--stone); }
+.price-discount-badge {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--teal-deep);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 2px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
 .price-breakdown {
   font-size: 0.75rem;
   color: rgba(255,255,255,0.45);
@@ -1339,6 +1365,10 @@ p { font-family: 'Inter', sans-serif; }
       <!-- Plan 1 -->
       <div class="price-card fade-up">
         <div class="price-plan-name">Course Only</div>
+        <div class="price-original-row">
+          <span class="price-original">₹1748</span>
+          <span class="price-discount-badge">60% OFF</span>
+        </div>
         <div class="price-amount"><span>₹</span>699</div>
         <div class="price-breakdown">One-time payment · Lifetime access</div>
         <ul class="price-features">
@@ -1356,6 +1386,10 @@ p { font-family: 'Inter', sans-serif; }
       <div class="price-card featured fade-up">
         <div class="featured-badge">⭐ Most Recommended</div>
         <div class="price-plan-name">Course + Support</div>
+        <div class="price-original-row">
+          <span class="price-original">₹2745</span>
+          <span class="price-discount-badge">60% OFF</span>
+        </div>
         <div class="price-amount" style="color:var(--teal-deep);"><span>₹</span>1098</div>
         <div class="price-breakdown">Course ₹699 + WhatsApp Support ₹399/mo</div>
         <div class="price-popular">👥 Most Students Choose This Plan</div>
@@ -1373,6 +1407,10 @@ p { font-family: 'Inter', sans-serif; }
       <!-- Plan 3 -->
       <div class="price-card fade-up">
         <div class="price-plan-name">Premium Mentorship</div>
+        <div class="price-original-row">
+          <span class="price-original">₹9995</span>
+          <span class="price-discount-badge">60% OFF</span>
+        </div>
         <div class="price-amount"><span>₹</span>3998</div>
         <div class="price-breakdown">Course ₹699 + Live Classes & Support ₹3299/mo</div>
         <ul class="price-features">
