@@ -17,7 +17,7 @@ var PIXEL_ID          = '1001951225815875';
   After deploying your Apps Script (see google-apps-script.gs),
   paste the generated URL here.
 */
-var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyPCal7nn6-Bv-HnF71-_upZ_hBVzcklZs5BOYXoKDaKweRj2055MDjFmJSxkx0HMUJKQ/exec'; // ← REPLACE
+var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxwwdNOQYboWXY5b7QMB8Yj2GDylwTH3OyY4Cdz1f4h-55F-MFUCaYN6KzMhxMMZi3SVQ/exec'; // ← REPLACE
 
 /* ── Meta Pixel Helper ─────────────────────────────────────── */
 function fbqTrack(event, data) {
