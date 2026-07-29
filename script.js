@@ -7,7 +7,7 @@
 'use strict';
 
 /* ── CONFIGURATION ─────────────────────────────────────────── */
-var RAZORPAY_KEY_ID   = 'rzp_live_Sczvk68iCuryMo'; // ← REPLACE with your Razorpay Key ID
+var RAZORPAY_KEY_ID   = 'rzp_test_SdLEnL0lYIFFpw'; // ← REPLACE with your Razorpay Key ID
 var COURSE_AMOUNT     = 79900;                         // paise (₹799)
 var COURSE_NAME       = 'Flute Mastery — Complete Course';
 var BUSINESS_NAME     = 'Flute Mastery';
