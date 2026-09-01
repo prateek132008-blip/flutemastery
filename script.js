@@ -473,6 +473,63 @@ function closeUdyamModal() {
   }
 })();
 
+/* ── Sticky Buy Bar ─────────────────────────────────────────
+   Shows a fixed bottom purchase bar once the visitor has scrolled
+   past BOTH the Hero and Bundle sections, and hides it again while
+   either of those (or a modal) is in view — so there's never a
+   duplicate/competing CTA on screen. The buttons in the bar call
+   the SAME openEnrollmentModal()/openProductModal() functions used
+   elsewhere on the page; no separate payment logic is created. */
+(function initStickyBuyBar() {
+  var bar = document.getElementById('stickyBuyBar');
+  if (!bar) return;
+
+  var heroEl   = document.getElementById('hero');
+  var bundleEl = document.getElementById('bundle');
+
+  var heroVisible   = true;  // assume visible at initial page load
+  var bundleVisible = false;
+
+  function update() {
+    bar.classList.toggle('visible', !heroVisible && !bundleVisible);
+  }
+
+  if ('IntersectionObserver' in window) {
+    if (heroEl) {
+      new IntersectionObserver(function (entries) {
+        heroVisible = entries[0].isIntersecting;
+        update();
+      }, { threshold: 0 }).observe(heroEl);
+    } else {
+      heroVisible = false;
+    }
+
+    if (bundleEl) {
+      new IntersectionObserver(function (entries) {
+        bundleVisible = entries[0].isIntersecting;
+        update();
+      }, { threshold: 0 }).observe(bundleEl);
+    }
+
+    update();
+  }
+  // If IntersectionObserver isn't supported, the bar simply stays
+  // hidden (its default state) rather than risk mis-firing.
+
+  // Hide the bar while any purchase modal is open so it never sits
+  // on top of a modal/checkout.
+  var modalOverlays = document.querySelectorAll('.modal-overlay');
+  if (modalOverlays.length && 'MutationObserver' in window) {
+    var modalObserver = new MutationObserver(function () {
+      var anyOpen = !!document.querySelector('.modal-overlay.active');
+      bar.classList.toggle('modal-open', anyOpen);
+    });
+    modalOverlays.forEach(function (m) {
+      modalObserver.observe(m, { attributes: true, attributeFilter: ['class'] });
+    });
+  }
+})();
+
 /* ── FAQ Accordion ─────────────────────────────────────────── */
 function toggleFaq(questionEl) {
   var item   = questionEl.closest('.faq-item');
