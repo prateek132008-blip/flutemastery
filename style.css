@@ -1561,6 +1561,38 @@ footer {
   }
 }
 
+/* Highlighted variant — used for the "Already Know the Basics?" /
+   "Need to Build Your Basics First?" cards so they're noticeably
+   more visible than a plain crosssell-box, while staying clearly
+   secondary to the primary purchase CTA (no gold-gradient button,
+   just a soft gold glow/border on the existing card). */
+.crosssell-box--highlight {
+  background: rgba(232,184,75,0.06);
+  border: 1px solid rgba(232,184,75,0.28);
+  box-shadow: 0 0 0 1px rgba(232,184,75,0.06), 0 12px 36px rgba(201,146,42,0.14);
+}
+.crosssell-tag {
+  display: inline-block;
+  background: rgba(232,184,75,0.12);
+  color: var(--gold-light);
+  border: 1px solid rgba(232,184,75,0.3);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 14px;
+}
+.crosssell-box--highlight .crosssell-btn.btn-outline {
+  border-color: rgba(232,184,75,0.5);
+  color: var(--white);
+}
+.crosssell-box--highlight .crosssell-btn.btn-outline:hover {
+  background: rgba(232,184,75,0.14);
+  border-color: var(--gold-light);
+}
+
 /* ── Bundle Offer Section ─────────────────────────────────── */
 .bundle-section { background: var(--gold-pale); }
 .bundle-card {
