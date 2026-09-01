@@ -309,6 +309,53 @@
     </div>
   </section>
 
+  <!-- ── BUNDLE OFFER (Beginner + Advanced) — moved up so it's
+       noticeable early, but kept as a secondary/compact banner
+       (section-sm) so the Beginner course above stays the primary
+       offer. Same section, same id="bundle", same purchase logic —
+       only its position and padding changed. ── -->
+  <section class="bundle-section section-sm" id="bundle">
+    <div class="container text-center">
+      <span class="tag">Best Value</span>
+      <h2 class="section-heading">Get Both Courses &amp; Save</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+      <p class="section-subheading">Complete beginner to advanced ornamentation — one bundle, one payment.</p>
+      <div class="bundle-card" data-reveal>
+        <div class="bundle-covers">
+          <div class="float-wrap"><img src="Beginner_flute_course_cover.png" alt="Beginner Flute Course cover" /></div>
+          <span class="bundle-plus" aria-hidden="true">+</span>
+          <div class="float-wrap"><img src="Advance_flute_course_cover.png" alt="Advanced Flute Mastery cover" /></div>
+        </div>
+        <div class="bundle-content">
+          <span class="bundle-badge">🔥 Beginner + Advanced</span>
+          <div class="bundle-title">Complete Flute Mastery Bundle</div>
+          <div class="bundle-amount">
+            <span class="bundle-price">₹1,601</span>
+            <span class="bundle-orig">₹3,498</span>
+          </div>
+          <span class="save-badge">You Save ₹1,897</span>
+          <div class="offer-timer" id="bundleOfferTimer" style="margin-left:0">
+            <span class="offer-timer-label">⚡ Offer ends in</span>
+            <span class="offer-timer-clock">
+              <span class="unit" data-unit="h">03</span><span class="sep">:</span>
+              <span class="unit" data-unit="m">00</span><span class="sep">:</span>
+              <span class="unit" data-unit="s">00</span>
+            </span>
+          </div>
+          <ul class="bundle-features">
+            <li><span class="pf-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>Beginner Flute Course — Lifetime Access</li>
+            <li><span class="pf-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>Advanced Flute Mastery — Lifetime Access</li>
+            <li><span class="pf-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>30 Alankaar eBook — FREE</li>
+            <li><span class="pf-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>3 Months WhatsApp Support — FREE (worth ₹1,497)</li>
+          </ul>
+          <button class="btn btn-primary btn-full btn-lg" onclick="openProductModal('bundle')">
+            🎁 Get Both Courses – ₹1,601
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── FEATURES ──────────────────────────────────────────── -->
   <section class="features section-sm" id="about">
     <div class="container">
@@ -786,49 +833,6 @@
     </div>
   </section>
 
-  <!-- ── BUNDLE OFFER (Beginner + Advanced) ──────────────────── -->
-  <section class="bundle-section section" id="bundle">
-    <div class="container text-center">
-      <span class="tag">Best Value</span>
-      <h2 class="section-heading">Get Both Courses &amp; Save</h2>
-      <div class="section-divider" aria-hidden="true"></div>
-      <p class="section-subheading">Complete beginner to advanced ornamentation — one bundle, one payment.</p>
-      <div class="bundle-card" data-reveal>
-        <div class="bundle-covers">
-          <div class="float-wrap"><img src="Beginner_flute_course_cover.png" alt="Beginner Flute Course cover" /></div>
-          <span class="bundle-plus" aria-hidden="true">+</span>
-          <div class="float-wrap"><img src="Advance_flute_course_cover.png" alt="Advanced Flute Mastery cover" /></div>
-        </div>
-        <div class="bundle-content">
-          <span class="bundle-badge">🔥 Beginner + Advanced</span>
-          <div class="bundle-title">Complete Flute Mastery Bundle</div>
-          <div class="bundle-amount">
-            <span class="bundle-price">₹1,601</span>
-            <span class="bundle-orig">₹3,498</span>
-          </div>
-          <span class="save-badge">You Save ₹1,897</span>
-          <div class="offer-timer" id="bundleOfferTimer" style="margin-left:0">
-            <span class="offer-timer-label">⚡ Offer ends in</span>
-            <span class="offer-timer-clock">
-              <span class="unit" data-unit="h">03</span><span class="sep">:</span>
-              <span class="unit" data-unit="m">00</span><span class="sep">:</span>
-              <span class="unit" data-unit="s">00</span>
-            </span>
-          </div>
-          <ul class="bundle-features">
-            <li><span class="pf-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>Beginner Flute Course — Lifetime Access</li>
-            <li><span class="pf-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>Advanced Flute Mastery — Lifetime Access</li>
-            <li><span class="pf-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>30 Alankaar eBook — FREE</li>
-            <li><span class="pf-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>3 Months WhatsApp Support — FREE (worth ₹1,497)</li>
-          </ul>
-          <button class="btn btn-primary btn-full btn-lg" onclick="openProductModal('bundle')">
-            🎁 Get Both Courses – ₹1,601
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ── CROSS-SELL: Beginner → Advanced ──────────────────────── -->
   <section class="crosssell-section section-sm">
     <div class="container">
@@ -975,6 +979,27 @@
       </div>
     </div>
   </footer>
+
+  <!-- ── STICKY BUY BAR ────────────────────────────────────────
+       Appears once the visitor scrolls past the Hero and Bundle
+       sections. Buttons call the SAME existing purchase functions
+       as the rest of the page — no new payment logic. ── -->
+  <div class="sticky-buy-bar" id="stickyBuyBar" aria-hidden="true">
+    <div class="container sticky-buy-inner">
+      <div class="sticky-buy-info">
+        <span class="sticky-buy-name">Flute Mastery — Complete Course</span>
+        <span class="sticky-buy-price">₹799 <span class="sticky-buy-orig">₹2,499</span></span>
+      </div>
+      <div class="sticky-buy-actions">
+        <button class="btn btn-outline btn-sm sticky-buy-secondary" onclick="openProductModal('bundle')">
+          Buy Both
+        </button>
+        <button class="btn btn-primary sticky-buy-primary" onclick="openEnrollmentModal()">
+          Buy Course
+        </button>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
