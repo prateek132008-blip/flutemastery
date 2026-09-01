@@ -1593,6 +1593,65 @@ footer {
   border-color: var(--gold-light);
 }
 
+/* Cover image shown above the heading in the highlighted crosssell
+   cards — subtle gold backlight glow behind the cover, plus a few
+   small musical notes that gently float and fade around the sides.
+   Contained within the card's own padding so nothing can overflow
+   horizontally on mobile. */
+.crosssell-cover {
+  position: relative;
+  width: clamp(108px, 30vw, 148px);
+  margin: 0 auto 20px;
+}
+.crosssell-cover::before {
+  content: '';
+  position: absolute;
+  inset: -26%;
+  background: radial-gradient(circle at 50% 45%, rgba(232,184,75,0.32), transparent 62%);
+  filter: blur(16px);
+  z-index: 0;
+  pointer-events: none;
+}
+.crosssell-cover img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 700 / 900;
+  object-fit: contain;
+  border-radius: var(--radius-md, 10px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.35);
+}
+.crosssell-note {
+  position: absolute;
+  z-index: 2;
+  color: rgba(232,184,75,0.6);
+  font-size: 0.95rem;
+  line-height: 1;
+  pointer-events: none;
+  opacity: 0;
+  animation: crosssellNoteFloat 5.2s ease-in-out infinite;
+}
+.crosssell-note--1 { top: 2%;    left: -10px;  font-size: 1.05rem; animation-delay: 0s; }
+.crosssell-note--2 { top: 32%;   right: -12px; font-size: 0.85rem; animation-delay: 1.3s; }
+.crosssell-note--3 { bottom: 16%; left: -8px;  font-size: 0.8rem;  animation-delay: 2.6s; }
+.crosssell-note--4 { bottom: -4px; right: -6px; font-size: 0.95rem; animation-delay: 3.8s; }
+@keyframes crosssellNoteFloat {
+  0%   { transform: translateY(4px) scale(0.9); opacity: 0; }
+  18%  { opacity: 0.8; }
+  50%  { transform: translateY(-8px) scale(1); opacity: 0.85; }
+  85%  { opacity: 0.15; }
+  100% { transform: translateY(-16px) scale(0.9); opacity: 0; }
+}
+@media (max-width: 480px) {
+  .crosssell-note--1, .crosssell-note--3 { left: -6px; }
+  .crosssell-note--2, .crosssell-note--4 { right: -6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .crosssell-note { animation: none; opacity: 0.45; }
+}
+
 /* ── Bundle Offer Section ─────────────────────────────────── */
 .bundle-section { background: var(--gold-pale); }
 .bundle-card {
