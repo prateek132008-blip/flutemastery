@@ -1021,6 +1021,13 @@ footer {
 }
 .inner-content ul { padding-left: 20px; list-style: disc; }
 .inner-content a { color: var(--gold); }
+.inner-content h3 {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 20px 0 8px;
+}
 
 /* ── CONTACT ───────────────────────────────────────────────── */
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
@@ -1650,6 +1657,100 @@ footer {
 }
 @media (prefers-reduced-motion: reduce) {
   .crosssell-note { animation: none; opacity: 0.45; }
+}
+
+/* ── Certified Course badge (Hero) ───────────────────────────
+   Small premium pill sitting just under the existing hero-eyebrow.
+   Reuses the same gold tokens so it reads as part of the same
+   design system rather than a bolted-on element. ── */
+.hero-cert-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(232,184,75,0.1);
+  border: 1px solid rgba(232,184,75,0.35);
+  color: var(--gold-light);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin: -8px 0 20px;
+}
+.hero-cert-badge .cert-emoji { font-size: 0.9rem; line-height: 1; }
+
+/* ── Certificate Section (Beginner + Advanced pages) ─────────
+   Placed right after the cross-sell section on both pages. Two
+   column layout on desktop (image | info), stacked on mobile.
+   Reuses .section/.tag/.section-heading/.section-divider tokens. ── */
+.certificate-section { background: var(--white); border-top: 1px solid var(--border); }
+.certificate-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 48px;
+  align-items: center;
+  max-width: 980px;
+  margin: 0 auto;
+}
+.certificate-visual { position: relative; }
+.certificate-watermark-wrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  line-height: 0;
+}
+.certificate-watermark-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* CSS-only repeating watermark overlay — display/preview only.
+   Never touches the underlying image file, and is not present in
+   the certificate files actually delivered to students. */
+.certificate-watermark {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='220'%20height='110'%3E%3Ctext%20x='0'%20y='65'%20transform='rotate(-30%20110%2055)'%20font-family='Arial,%20sans-serif'%20font-size='22'%20font-weight='700'%20fill='rgba(15,13,10,0.16)'%3EFluteRoom%3C/text%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 90px;
+}
+.certificate-info h3 {
+  font-family: var(--font-head);
+  font-size: 1.25rem;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+.certificate-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+.certificate-steps li { display: flex; gap: 14px; align-items: flex-start; }
+.cert-step-num {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--gold-pale);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.88rem;
+  border: 1px solid var(--border);
+}
+.certificate-steps strong { display: block; color: var(--text); font-size: 0.95rem; margin-bottom: 2px; }
+.certificate-steps p { color: var(--text-2); font-size: 0.85rem; line-height: 1.5; margin: 0; }
+.certificate-note { font-size: 0.8rem; color: var(--text-3); font-style: italic; line-height: 1.5; }
+@media (max-width: 860px) {
+  .certificate-grid { grid-template-columns: 1fr; gap: 28px; }
+  .certificate-visual { max-width: 420px; margin: 0 auto; }
 }
 
 /* ── Bundle Offer Section ─────────────────────────────────── */
