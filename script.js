@@ -68,6 +68,71 @@ function getCookie(name) {
   return match ? decodeURIComponent(match[1]) : '';
 }
 
+/* ── CHECKOUT FIX #1 — Razorpay SDK readiness guard ───────────
+   checkout.js is loaded with a plain <script> tag in <head>. On a
+   slow mobile connection, inside an Instagram/Facebook in-app
+   browser, or behind an ad/tracker blocker, that request can fail
+   or still be pending when the visitor submits the form. Before,
+   `new Razorpay(options)` was called unconditionally — if the SDK
+   wasn't there it threw a ReferenceError, the modal had already
+   closed, and the visitor was left staring at a page that appeared
+   to be "loading" with no checkout and no error.
+
+   This helper waits for the SDK, re-injects it once if it never
+   arrived, and gives up with a clear message + WhatsApp fallback
+   instead of failing silently. */
+var RAZORPAY_SDK_URL = 'https://checkout.razorpay.com/v1/checkout.js';
+var _rzpInjected = false;
+
+function ensureRazorpayReady(onReady, onFail) {
+  if (typeof Razorpay !== 'undefined') { onReady(); return; }
+
+  if (!_rzpInjected) {
+    _rzpInjected = true;
+    var s = document.createElement('script');
+    s.src = RAZORPAY_SDK_URL;
+    s.async = true;
+    document.head.appendChild(s);
+  }
+
+  var waited = 0;
+  var poll = setInterval(function () {
+    if (typeof Razorpay !== 'undefined') {
+      clearInterval(poll);
+      onReady();
+      return;
+    }
+    waited += 200;
+    if (waited >= 8000) {          // hard ceiling — never spin forever
+      clearInterval(poll);
+      onFail();
+    }
+  }, 200);
+}
+
+/* CHECKOUT FIX #2 — never allow two checkout instances at once.
+   A second rzp.open() while one is already open stacks a second
+   iframe over the first; the visitor then sees a checkout overlay
+   that appears frozen. Cleared by ondismiss / handler / error. */
+var _checkoutOpen = false;
+
+/* Small helper: resolve a promise no later than `ms`, whatever the
+   network is doing. Used to stop a slow Apps Script write from
+   delaying (or permanently blocking) the Razorpay open. */
+function withTimeout(promise, ms) {
+  return new Promise(function (resolve) {
+    var done = false;
+    var t = setTimeout(function () {
+      if (!done) { done = true; resolve({ timedOut: true }); }
+    }, ms);
+    promise.then(function () {
+      if (!done) { done = true; clearTimeout(t); resolve({ timedOut: false }); }
+    }, function () {
+      if (!done) { done = true; clearTimeout(t); resolve({ timedOut: false }); }
+    });
+  });
+}
+
 /* ── Enrollment Modal ──────────────────────────────────────── */
 /*
   The modal collects Name, Email, and WhatsApp before opening
@@ -103,6 +168,13 @@ function openEnrollmentModal() {
 function closeEnrollmentModal() {
   var overlay = document.getElementById('enrollModal');
   if (!overlay) return;
+  /* CHECKOUT FIX #5: this runs on every Escape keypress, page-wide.
+     Previously it reset body{overflow} even when this modal was not
+     open — including while the Razorpay checkout overlay was on
+     screen, which let the page scroll behind the checkout and made
+     it look broken/stuck. Now it only acts when it is actually the
+     open modal. */
+  if (!overlay.classList.contains('active')) return;
   overlay.classList.remove('active');
   document.body.style.overflow = '';
   resetModalForm();
@@ -213,8 +285,21 @@ function handleEnrollSubmit(e) {
   setModalSubmitLoading(true);
   setModalStatus('Saving your details…', false);
 
-  /* Step 1 — Save lead to Google Sheets (status: pending) */
-  saveLeadToSheet({
+  /* Step 1 — Save lead to Google Sheets (status: pending)
+
+     CHECKOUT FIX #3: this write used to sit directly between the
+     visitor's tap and rzp.open(), with nothing capping how long it
+     could take. saveLeadToSheet() resolves rather than rejects on
+     failure, so the .catch() "open Razorpay anyway" safety net below
+     could never actually run — if the request hung, the flow simply
+     stopped and Razorpay never opened at all.
+
+     It is now wrapped in a 1200 ms ceiling. The write still goes out
+     (sendBeacon / keepalive fetch are fire-and-forget by design and
+     complete independently of this page) — we just stop waiting for
+     it. The 400 ms cosmetic delay is also removed so rzp.open() stays
+     as close as possible to the original tap. */
+  withTimeout(saveLeadToSheet({
     name:      name,
     email:     email,
     phone:     whatsapp,
@@ -223,20 +308,13 @@ function handleEnrollSubmit(e) {
     amount:    '799',
     course:    COURSE_NAME,
     rowToken:  _rowToken,
-  })
-  .then(function () {
+  }), 1200)
+  .then(function (r) {
+    if (r && r.timedOut) {
+      console.warn('[Sheet] Pending write slow — proceeding to payment without waiting.');
+    }
     setModalStatus('Opening secure payment…', false);
     /* Step 2 — Open Razorpay */
-    setTimeout(function () {
-      setModalSubmitLoading(false);
-      closeEnrollmentModal();
-      initiatePayment();
-    }, 400);
-  })
-  .catch(function (err) {
-    /* If sheet save fails, still open Razorpay — don't block payment */
-    console.warn('[Sheet] Lead save failed, continuing to payment:', err);
-    setModalStatus('', false);
     setModalSubmitLoading(false);
     closeEnrollmentModal();
     initiatePayment();
@@ -295,6 +373,13 @@ function initiatePayment() {
     return;
   }
 
+  if (_checkoutOpen) return;   // CHECKOUT FIX #2 — no stacked instances
+
+  /* CHECKOUT FIX #4: the modal set body{overflow:hidden}. If anything
+     below throws, that was never restored and the page looked frozen.
+     Restore it up front — Razorpay manages its own scroll lock. */
+  document.body.style.overflow = '';
+
   var options = {
     key:         RAZORPAY_KEY_ID,
     amount:      COURSE_AMOUNT,
@@ -320,12 +405,14 @@ function initiatePayment() {
     modal: {
       ondismiss: function () {
         console.log('[Razorpay] Checkout dismissed');
+        _checkoutOpen = false;
         _studentData = {};
         _rowToken    = '';
       },
     },
 
     handler: function (response) {
+      _checkoutOpen = false;
       var paymentId = response.razorpay_payment_id;
       var orderId   = response.razorpay_order_id   || '';
       var signature = response.razorpay_signature   || '';
@@ -374,14 +461,30 @@ function initiatePayment() {
     },
   };
 
-  var rzp = new Razorpay(options);
+  /* CHECKOUT FIX #1 applied: only construct/open once the SDK is
+     confirmed present, and surface a real error if it never loads. */
+  _checkoutOpen = true;
+  ensureRazorpayReady(function () {
+    try {
+      var rzp = new Razorpay(options);
 
-  rzp.on('payment.failed', function (response) {
-    console.error('[Razorpay] Payment failed:', response.error);
-    alert('Payment failed: ' + (response.error.description || 'Unknown error') + '. Please try again or WhatsApp us at +91 87092 68496.');
+      rzp.on('payment.failed', function (response) {
+        _checkoutOpen = false;
+        console.error('[Razorpay] Payment failed:', response.error);
+        alert('Payment failed: ' + (response.error.description || 'Unknown error') + '. Please try again or WhatsApp us at +91 87092 68496.');
+      });
+
+      rzp.open();
+    } catch (err) {
+      _checkoutOpen = false;
+      console.error('[Razorpay] Could not open checkout:', err);
+      alert('We could not open the secure payment window. Please try again, or WhatsApp us at +91 87092 68496 and we will send you a direct payment link.');
+    }
+  }, function () {
+    _checkoutOpen = false;
+    console.error('[Razorpay] checkout.js failed to load.');
+    alert('The secure payment window could not load — this can happen inside the Instagram or Facebook in-app browser. Please tap the ⋯ menu and choose "Open in Chrome" / "Open in Safari", or WhatsApp us at +91 87092 68496 for a direct payment link.');
   });
-
-  rzp.open();
 }
 
 /* ── Hero Autoplay Video — unmute toggle ───────────────────── */
@@ -441,6 +544,7 @@ function openUdyamModal() {
 function closeUdyamModal() {
   var overlay = document.getElementById('udyamModal');
   if (!overlay) return;
+  if (!overlay.classList.contains('active')) return;  /* CHECKOUT FIX #5 */
   overlay.classList.remove('active');
   document.body.style.overflow = '';
 }
@@ -768,6 +872,7 @@ function openProductModal(productKey) {
 function closeProductModal(productKey) {
   var overlay = document.getElementById('enrollModal' + capitalize_(productKey));
   if (!overlay) return;
+  if (!overlay.classList.contains('active')) return;  /* CHECKOUT FIX #5 */
   overlay.classList.remove('active');
   document.body.style.overflow = '';
   var form = document.getElementById('enrollForm' + capitalize_(productKey));
@@ -883,20 +988,19 @@ function handleProductSubmit(e, productKey) {
   setProductModalSubmitLoading(productKey, true);
   setProductModalStatus(productKey, 'Saving your details…', false);
 
-  saveLeadToSheetTo(product.googleScriptUrl, {
+  /* CHECKOUT FIX #3 (same as Beginner flow): hard 1200 ms ceiling on
+     the pending-row write so a slow/hanging Apps Script request can
+     never delay or block rzp.open(). The 400 ms cosmetic delay is
+     removed to keep the open close to the original tap. */
+  withTimeout(saveLeadToSheetTo(product.googleScriptUrl, {
     name: name, email: email, phone: whatsapp,
     paymentId: '', status: 'pending', amount: String(product.price),
     course: product.name, rowToken: _productState[productKey].rowToken,
-  }).then(function () {
+  }), 1200).then(function (r) {
+    if (r && r.timedOut) {
+      console.warn('[Sheet] Pending write slow (' + productKey + ') — proceeding to payment.');
+    }
     setProductModalStatus(productKey, 'Opening secure payment…', false);
-    setTimeout(function () {
-      setProductModalSubmitLoading(productKey, false);
-      closeProductModal(productKey);
-      initiateProductPayment(productKey);
-    }, 400);
-  }).catch(function (err) {
-    console.warn('[Sheet] Lead save failed, continuing to payment:', err);
-    setProductModalStatus(productKey, '', false);
     setProductModalSubmitLoading(productKey, false);
     closeProductModal(productKey);
     initiateProductPayment(productKey);
@@ -907,6 +1011,9 @@ function initiateProductPayment(productKey) {
   var product = PRODUCTS[productKey];
   var state = _productState[productKey];
   if (!state.data.name) { openProductModal(productKey); return; }
+
+  if (_checkoutOpen) return;          // CHECKOUT FIX #2
+  document.body.style.overflow = '';  // CHECKOUT FIX #4
 
   var options = {
     key: RAZORPAY_KEY_ID, // same Razorpay account/key as Beginner Course
@@ -925,10 +1032,12 @@ function initiateProductPayment(productKey) {
     modal: {
       ondismiss: function () {
         console.log('[Razorpay] Checkout dismissed (' + productKey + ')');
+        _checkoutOpen = false;
         state.data = {}; state.rowToken = '';
       },
     },
     handler: function (response) {
+      _checkoutOpen = false;
       var paymentId = response.razorpay_payment_id;
       var orderId   = response.razorpay_order_id || '';
 
@@ -953,12 +1062,27 @@ function initiateProductPayment(productKey) {
     },
   };
 
-  var rzp = new Razorpay(options);
-  rzp.on('payment.failed', function (response) {
-    console.error('[Razorpay] Payment failed (' + productKey + '):', response.error);
-    alert('Payment failed: ' + (response.error.description || 'Unknown error') + '. Please try again or WhatsApp us at +91 87092 68496.');
+  /* CHECKOUT FIX #1 applied to the Advanced/Bundle flow as well. */
+  _checkoutOpen = true;
+  ensureRazorpayReady(function () {
+    try {
+      var rzp = new Razorpay(options);
+      rzp.on('payment.failed', function (response) {
+        _checkoutOpen = false;
+        console.error('[Razorpay] Payment failed (' + productKey + '):', response.error);
+        alert('Payment failed: ' + (response.error.description || 'Unknown error') + '. Please try again or WhatsApp us at +91 87092 68496.');
+      });
+      rzp.open();
+    } catch (err) {
+      _checkoutOpen = false;
+      console.error('[Razorpay] Could not open checkout (' + productKey + '):', err);
+      alert('We could not open the secure payment window. Please try again, or WhatsApp us at +91 87092 68496 and we will send you a direct payment link.');
+    }
+  }, function () {
+    _checkoutOpen = false;
+    console.error('[Razorpay] checkout.js failed to load (' + productKey + ').');
+    alert('The secure payment window could not load — this can happen inside the Instagram or Facebook in-app browser. Please tap the \u22ef menu and choose "Open in Chrome" / "Open in Safari", or WhatsApp us at +91 87092 68496 for a direct payment link.');
   });
-  rzp.open();
 }
 
 /* ── Rotating 3-Hour Countdown Timer ────────────────────────────
