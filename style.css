@@ -1993,3 +1993,138 @@ footer {
   text-align: left;
 }
 .outcome-outro { margin: 32px auto 0; }
+
+/* ============================================================
+   v4 — PAYMENT RECOVERY (floating buttons + recovery popup)
+   Added at the end; nothing above was changed. Uses the site's
+   gold/dark palette and the existing .modal-* / .btn classes.
+   ============================================================ */
+
+/* WhatsApp float (bottom) + "Payment failed? — Pay here" (12 px above it).
+   Exact bottom offsets are set by script.js so both clear the sticky buy bar. */
+.fm-wa-float {
+  position: fixed; right: 20px; bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  z-index: 960; width: 52px; height: 52px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: #25D366; color: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.fm-wa-float:hover { transform: translateY(-2px); }
+
+@property --fm-angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+.fm-pay-float {
+  position: fixed; right: 20px; bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+  z-index: 961; padding: 2px; border: none; border-radius: 100px; cursor: pointer;
+  background: conic-gradient(from var(--fm-angle), rgba(201,146,42,0.15) 0deg, var(--gold) 70deg, var(--gold-light) 110deg, rgba(201,146,42,0.15) 170deg, rgba(201,146,42,0.15) 360deg);
+  animation: fm-spin 4s linear infinite;
+  box-shadow: 0 10px 28px rgba(201,146,42,0.28);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.fm-pay-float::before {
+  content: ''; position: absolute; inset: -3px; border-radius: inherit; z-index: -1;
+  background: conic-gradient(from var(--fm-angle), transparent 0deg, rgba(232,184,75,0.55) 80deg, transparent 170deg, transparent 360deg);
+  filter: blur(7px); opacity: 0.7; animation: fm-spin 4s linear infinite;
+}
+.fm-pay-float-inner {
+  display: flex; align-items: center; gap: 6px; white-space: nowrap;
+  background: #1A1612; color: #fff; border-radius: 100px;
+  padding: 11px 18px; font-family: var(--font-body); font-size: 0.84rem; font-weight: 700;
+}
+.fm-pay-here { color: var(--gold-light); }
+.fm-pay-float:hover { transform: translateY(-2px); }
+.fm-pay-float:focus-visible, .fm-wa-float:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 3px; }
+.fm-hidden { opacity: 0 !important; pointer-events: none !important; }
+@keyframes fm-spin { to { --fm-angle: 360deg; } }
+@media (max-width: 600px) {
+  .fm-wa-float { right: 14px; width: 48px; height: 48px; }
+  .fm-pay-float { right: 14px; }
+  .fm-pay-float-inner { padding: 10px 15px; font-size: 0.8rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fm-pay-float, .fm-pay-float::before { animation: none; }
+}
+
+/* Recovery popup (reuses .modal-overlay / .modal-box / .modal-title …) */
+.fm-pr-box {
+  max-width: 440px; padding: 32px 26px 26px; text-align: center;
+  max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px);
+  overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+}
+.fm-pr-box .modal-title { padding-right: 28px; padding-left: 28px; }
+.fm-pr-lede { margin-bottom: 16px; }
+.fm-pr-products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
+.fm-pr-product {
+  display: flex; flex-direction: column; gap: 2px; align-items: center;
+  padding: 9px 6px; border-radius: var(--radius); cursor: pointer;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.7); font-family: var(--font-body); font-size: 0.78rem;
+}
+.fm-pr-product strong { color: var(--white); font-size: 0.86rem; }
+.fm-pr-product.active { border-color: var(--gold); background: rgba(201,146,42,0.12); color: var(--gold-light); }
+.fm-pr-amount { margin-bottom: 14px; text-align: left; }
+.fm-pr-block {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(201,146,42,0.18);
+  border-radius: var(--radius); padding: 16px; margin-bottom: 12px;
+}
+.fm-pr-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 10px; }
+.fm-pr-qr { display: block; margin: 0 auto; width: min(210px, 60vw); height: auto; border-radius: 14px; background: #F3D38F; }
+.fm-pr-note { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 10px; }
+.fm-pr-note strong { color: var(--white); }
+.fm-pr-upi-row {
+  display: flex; align-items: center; gap: 8px; text-align: left;
+  border: 1.5px dashed rgba(201,146,42,0.55); border-radius: var(--radius); padding: 8px 8px 8px 14px;
+}
+.fm-pr-upi-id { flex: 1; min-width: 0; font-family: var(--font-head); font-weight: 700; font-size: 1.02rem; color: var(--white); word-break: break-all; user-select: all; -webkit-user-select: all; }
+.fm-pr-copy {
+  flex-shrink: 0; border: none; border-radius: 100px; padding: 10px 14px; cursor: pointer;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); color: #fff;
+  font-family: var(--font-body); font-weight: 700; font-size: 0.8rem;
+}
+.fm-pr-copied { min-height: 18px; margin-top: 8px; font-size: 0.8rem; font-weight: 700; }
+.fm-pr-after { text-align: left; font-size: 0.86rem; color: rgba(255,255,255,0.8); margin-top: 16px; }
+.fm-pr-after strong { color: var(--white); }
+.fm-pr-wa-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
+  background: #25D366; color: #fff; border-radius: 100px; padding: 14px 18px;
+  font-weight: 700; font-size: 0.9rem; margin: 10px 0 12px; text-align: center;
+}
+.fm-pr-steps { list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 0.8rem; color: rgba(255,255,255,0.55); padding: 0; }
+.fm-pr-steps li::before { content: '✓ '; color: var(--gold-light); font-weight: 700; }
+.fm-pr-support { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.8rem; color: rgba(255,255,255,0.55); }
+.fm-pr-support strong { color: var(--white); }
+.fm-pr-support-actions { display: flex; gap: 8px; justify-content: center; margin-top: 8px; flex-wrap: wrap; }
+.fm-pr-support-actions a { border: 1px solid rgba(255,255,255,0.15); border-radius: 100px; padding: 8px 14px; font-weight: 700; color: var(--white); font-size: 0.8rem; }
+.fm-pr-or {
+  display: flex; align-items: center; gap: 10px; margin: 18px 0 12px;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4);
+}
+.fm-pr-or::before, .fm-pr-or::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+.fm-pr-already {
+  margin-top: 14px; text-align: left; font-size: 0.86rem; color: rgba(255,255,255,0.75);
+  background: rgba(37,211,102,0.08); border: 1px solid rgba(37,211,102,0.35); border-radius: var(--radius); padding: 14px 16px;
+}
+.fm-pr-already strong { display: block; color: #6FE3A3; font-size: 0.95rem; margin-bottom: 4px; }
+.fm-pr-already a {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
+  background: #25D366; color: #fff; border-radius: 100px; padding: 9px 16px; font-weight: 700; font-size: 0.82rem;
+}
+.fm-pr-already a svg { width: 16px; height: 16px; }
+@media (max-width: 380px) {
+  .fm-pr-box { padding: 28px 16px 20px; }
+  .fm-pr-upi-id { font-size: 0.92rem; }
+}
+
+/* v4 — mobile overflow fix (pre-existing): long button labels
+   (.btn has white-space: nowrap) stretched the one-column grids of the
+   Bundle card and the Free Lesson section to ~380 px on 360 px phones,
+   so the whole page scrolled sideways and fixed buttons were cut off. */
+@media (max-width: 800px) {
+  .bundle-card { grid-template-columns: minmax(0, 1fr); }
+  .bundle-content .btn { white-space: normal; text-align: center; }
+}
+@media (max-width: 900px) {
+  .lesson-grid { grid-template-columns: minmax(0, 1fr); }
+  .lesson-grid .btn { white-space: normal; text-align: center; }
+}
