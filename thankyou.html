@@ -64,31 +64,13 @@
       </div>
 
       <div class="ty-actions">
-        <!--
-          REPLACE this Google Drive link with your actual course folder link.
-          Make sure the folder sharing is set to "Anyone with the link can view".
-        -->
-        <a href="https://drive.google.com/drive/folders/1NzNCk_1cJwqV51D9UrPdHd_SHwzElyn2?usp=drive_link"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="btn btn-primary btn-lg btn-full">
-          🎵 Access Your Course (Google Drive)
-        </a>
+        <!-- Course access appears here only AFTER the payment is verified with
+             Razorpay by the Google Script (links are no longer in the page code). -->
+        <div id="tyAccess" style="display:flex;flex-direction:column;gap:12px">
+          <span class="btn btn-primary btn-lg btn-full" style="opacity:0.6;pointer-events:none">⏳ Verifying your payment…</span>
+        </div>
+        <p id="tyAccessStatus" style="color:rgba(255,255,255,0.6);font-size:0.82rem;text-align:center;margin:-4px 0 4px">Confirming your payment with Razorpay…</p>
 
-        <!--
-          REPLACE YOUR_PDF_URL with the direct public link to your course PDF.
-          You can host this on Google Drive or any file hosting service.
-        -->
-        <a href="https://drive.google.com/uc?id=1jN4QqVSKcul-YV6E_58CsxhcRcYUDLgB"
-           download
-           class="btn btn-outline-dark btn-lg btn-full"
-           style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.75)">
-          📄 Download Course PDF Notes
-        </a>
-
-        <!--
-          REPLACE +919999999999 with your actual WhatsApp number.
-        -->
         <a id="tyWhatsappBtn"
            href="https://wa.me/918709268496?text=Hi!%20I%20just%20purchased%20the%20Flute%20Mastery%20course.%20Please%20help%20me%20get%20started!"
            target="_blank"
