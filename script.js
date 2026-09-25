@@ -41,10 +41,10 @@ var PRODUCTS = {
 };
 
 /* ── PAYMENT RECOVERY — manual UPI details (the ONLY place to change them) ──
-   QR image → replace the file assets/payment/upi-qr.png (keep the name).
+   QR image → replace the file assets/upi-qr.png (keep the name).
    Public details only — no secret keys belong here. */
 var PAYMENT_RECOVERY = {
-  QR_IMAGE:              'assets/payment/upi-qr.png',
+  QR_IMAGE:              'assets/upi-qr.png',
   UPI_ID:                'prateekjha@fam',
   WHATSAPP_NUMBER:       '918709268496',     // country code + number, no + or spaces
   SUPPORT_PHONE_DISPLAY: '+91 8709268496',
