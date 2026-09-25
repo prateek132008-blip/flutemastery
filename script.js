@@ -95,12 +95,14 @@ function setPixelAdvancedMatching(user) {
   var nameParts = String(user.name || '').trim().split(/\s+/).filter(Boolean);
   var fn = nameParts[0] || '';
   var ln = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
+  var em = (user.email || '').trim().toLowerCase();
   fbq('init', PIXEL_ID, {
-    em:      (user.email || '').trim().toLowerCase(),
-    ph:      normalizePhoneForMatching(user.phone),
-    fn:      fn,
-    ln:      ln,
-    country: 'in',
+    em:          em,
+    ph:          normalizePhoneForMatching(user.phone),
+    fn:          fn,
+    ln:          ln,
+    country:     'in',
+    external_id: em   // same key the server (CAPI) sends — hashed by the Pixel
   });
 }
 
@@ -322,6 +324,17 @@ function startCheckout(productKey, data, opts) {
   attempt.customer = data;
   saveAttempt_(productKey, attempt);
 
+  // Meta: attach the customer's details, then InitiateCheckout — once per
+  // purchase attempt (a retry reuses the same eventID, so Meta counts it once).
+  // Wrapped: a blocked/broken Pixel can never stop the payment window.
+  try {
+    setPixelAdvancedMatching(data);
+    fbqTrack('InitiateCheckout', {
+      value: product.price, currency: 'INR', content_name: product.name,
+      content_type: 'product', content_ids: [productKey]
+    }, { eventID: 'ic_' + attempt.ref });
+  } catch (e) { /* tracking only */ }
+
   // Pending lead → Sheet. Fire-and-forget: never delays or blocks Razorpay.
   scriptBeacon_({
     type: 'lead', status: 'pending', product: productKey, orderRef: attempt.ref,
@@ -513,12 +526,8 @@ var _studentData = {}; // holds form data between modal → Razorpay
 
 function openEnrollmentModal() {
   prefetchOrder_('beginner');   // v4: Razorpay order is ready before Submit
-  fbqTrack('InitiateCheckout', {
-    value: 799,
-    currency: 'INR',
-    content_name: COURSE_NAME,
-    content_type: 'product',
-  });
+  // InitiateCheckout now fires in startCheckout() — after the customer has
+  // entered their details (better match quality, one event per attempt).
   var overlay = document.getElementById('enrollModal');
   if (!overlay) return;
   overlay.classList.add('active');
@@ -1049,12 +1058,7 @@ function openProductModal(productKey) {
   var product = PRODUCTS[productKey];
   if (!product) return;
   prefetchOrder_(productKey);   // v4: Razorpay order is ready before Submit
-  fbqTrack('InitiateCheckout', {
-    value: product.price,
-    currency: 'INR',
-    content_name: product.name,
-    content_type: 'product',
-  });
+  // InitiateCheckout now fires in startCheckout() — see the Beginner modal note.
   var overlay = document.getElementById('enrollModal' + capitalize_(productKey));
   if (!overlay) return;
   overlay.classList.add('active');
