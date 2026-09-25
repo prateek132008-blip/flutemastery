@@ -2128,3 +2128,12 @@ footer {
   .lesson-grid { grid-template-columns: minmax(0, 1fr); }
   .lesson-grid .btn { white-space: normal; text-align: center; }
 }
+
+/* v4.1 — Option 3 "Pay to Phone Number": payee-name reassurance */
+.fm-pr-payee {
+  margin-top: 10px; padding: 10px 12px; border-radius: var(--radius);
+  background: rgba(37,211,102,0.08); border: 1px solid rgba(37,211,102,0.3);
+  font-size: 0.82rem; color: rgba(255,255,255,0.75); text-align: left;
+}
+.fm-pr-payee strong { color: #6FE3A3; letter-spacing: 0.04em; }
+.fm-pr-payee span { display: block; margin-top: 3px; font-size: 0.76rem; color: rgba(255,255,255,0.5); }
