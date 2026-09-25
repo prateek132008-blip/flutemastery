@@ -52,7 +52,7 @@ var PAYMENT_RECOVERY = {
 
   // Option 3 — "Pay to Phone Number" (any UPI app → Pay to phone number).
   // Enter the 10-digit number linked to the account below. Leave '' to hide Option 3.
-  PAY_PHONE_NUMBER:      '',
+  PAY_PHONE_NUMBER:      '7541940089',
   PAY_PHONE_NAME:        'NIDHI JHA',        // name customers will see in their UPI app
 };
 
