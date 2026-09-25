@@ -2137,3 +2137,15 @@ footer {
 }
 .fm-pr-payee strong { color: #6FE3A3; letter-spacing: 0.04em; }
 .fm-pr-payee span { display: block; margin-top: 3px; font-size: 0.76rem; color: rgba(255,255,255,0.5); }
+
+/* v4.2 — "Works with all UPI apps" logos (above the support line):
+   UPI logo on top, app logos in a row below, on a white card. */
+.fm-pr-apps { margin-top: 16px; }
+.fm-pr-apps-label { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 8px; }
+.fm-pr-app-card { background: #FFFFFF; border-radius: var(--radius); padding: 12px 14px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.fm-pr-app-top, .fm-pr-app-row { display: flex; justify-content: center; align-items: center; gap: 18px; flex-wrap: wrap; }
+.fm-pr-app { display: inline-flex; align-items: center; justify-content: center; }
+.fm-pr-app img { height: 34px; width: auto; display: block; object-fit: contain; }
+.fm-pr-app-top .fm-pr-app img { height: 38px; }
+.fm-pr-app.is-text { padding: 6px 10px; border-radius: 8px; background: #F3F0EA; }
+.fm-pr-app-text { font-size: 0.78rem; font-weight: 700; color: #1A1612; white-space: nowrap; }
