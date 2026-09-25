@@ -54,6 +54,16 @@ var PAYMENT_RECOVERY = {
   // Enter the 10-digit number linked to the account below. Leave '' to hide Option 3.
   PAY_PHONE_NUMBER:      '7541940089',
   PAY_PHONE_NAME:        'NIDHI JHA',        // name customers will see in their UPI app
+
+  // "Works with all UPI apps" badges (shown above "Having trouble with payment?").
+  // Put the OFFICIAL logo images at these paths (PNG/SVG, transparent background).
+  // Until a file exists, a neat text badge with the name is shown instead.
+  APP_BADGES: [
+    { name: 'UPI',        image: 'assets/payment-badges/upi.png', top: true },   // large logo on top
+    { name: 'Google Pay', image: 'assets/payment-badges/google-pay.png' },
+    { name: 'PhonePe',    image: 'assets/payment-badges/phonepe.png' },
+    { name: 'Paytm',      image: 'assets/payment-badges/paytm.png' },
+  ],
 };
 
 /* ── Meta Pixel Helper ─────────────────────────────────────── */
@@ -1293,6 +1303,9 @@ function initRotatingTimer(elementId, storageKey, durationMs) {
           '<li>Your course access is then sent to you on WhatsApp and email</li></ul>' +
         '</div>' +
 
+        '<div class="fm-pr-apps"><span class="fm-pr-apps-label">Works with all UPI apps</span>' +
+          '<div class="fm-pr-app-card"><div class="fm-pr-app-top" id="fmPrAppTop"></div><div class="fm-pr-app-row" id="fmPrAppRow"></div></div></div>' +
+
         '<div class="fm-pr-support">Having trouble with payment?<br>Call / WhatsApp: <strong id="fmPrPhone"></strong>' +
           '<div class="fm-pr-support-actions"><a id="fmPrCall">📞 Call</a><a id="fmPrSupportWa" target="_blank" rel="noopener">💬 WhatsApp</a></div>' +
         '</div>' +
@@ -1327,6 +1340,21 @@ function initRotatingTimer(elementId, storageKey, durationMs) {
   qr.addEventListener('error', function () { qr.style.display = 'none'; });   // missing file → hide, no broken icon
   if (PR.QR_IMAGE) { qr.src = PR.QR_IMAGE; qr.alt = 'UPI QR code to pay Flute Mastery (' + (PR.UPI_ID || '') + ')'; } else { qr.style.display = 'none'; }
   $('fmPrPhone').textContent = PR.SUPPORT_PHONE_DISPLAY || ('+' + WA);
+  // App badges: official logo image if the file exists, otherwise the name as text.
+  (PR.APP_BADGES || []).forEach(function (b) {
+    var chip = document.createElement('span');
+    chip.className = 'fm-pr-app';
+    var text = document.createElement('span');
+    text.className = 'fm-pr-app-text'; text.textContent = b.name;
+    if (b.image) {
+      var img = document.createElement('img');
+      img.alt = b.name; img.loading = 'lazy'; img.decoding = 'async';
+      img.addEventListener('error', function () { img.remove(); chip.appendChild(text); chip.classList.add('is-text'); });
+      img.src = b.image;
+      chip.appendChild(img);
+    } else { chip.appendChild(text); chip.classList.add('is-text'); }
+    $(b.top ? 'fmPrAppTop' : 'fmPrAppRow').appendChild(chip);
+  });
   $('fmPrCall').href = 'tel:' + String(PR.SUPPORT_PHONE_TEL || ('+' + WA)).replace(/[^\d+]/g, '');
   $('fmPrSupportWa').href = waLink('Hi! I\'m having trouble paying for a Flute Mastery course. Can you help?');
 
