@@ -49,6 +49,11 @@ var PAYMENT_RECOVERY = {
   WHATSAPP_NUMBER:       '918709268496',     // country code + number, no + or spaces
   SUPPORT_PHONE_DISPLAY: '+91 8709268496',
   SUPPORT_PHONE_TEL:     '+918709268496',
+
+  // Option 3 — "Pay to Phone Number" (any UPI app → Pay to phone number).
+  // Enter the 10-digit number linked to the account below. Leave '' to hide Option 3.
+  PAY_PHONE_NUMBER:      '',
+  PAY_PHONE_NAME:        'NIDHI JHA',        // name customers will see in their UPI app
 };
 
 /* ── Meta Pixel Helper ─────────────────────────────────────── */
@@ -1272,6 +1277,16 @@ function initRotatingTimer(elementId, storageKey, durationMs) {
           '<div class="fm-pr-copied" id="fmPrCopied" role="status" aria-live="polite"></div>' +
         '</div>' +
 
+        '<div class="fm-pr-block" id="fmPrPhoneBlock">' +
+          '<div class="fm-pr-label">Option 3 · Pay to Phone Number</div>' +
+          '<div class="fm-pr-upi-row"><span class="fm-pr-upi-id" id="fmPrPayPhone"></span>' +
+          '<button type="button" class="fm-pr-copy" id="fmPrCopyPhone">Copy Number</button></div>' +
+          '<div class="fm-pr-copied" id="fmPrCopiedPhone" role="status" aria-live="polite"></div>' +
+          '<p class="fm-pr-payee">Name shown in your payment app: <strong id="fmPrPayName"></strong>' +
+          '<span>This is our official payment account — you can pay safely.</span></p>' +
+          '<p class="fm-pr-note">Open any UPI app → <strong>Pay to phone number</strong> → paste the number → pay <strong class="fm-pr-price3"></strong>.</p>' +
+        '</div>' +
+
         '<div class="fm-pr-after"><strong>After completing the payment,</strong> send the payment screenshot on WhatsApp.' +
           '<a class="fm-pr-wa-btn" id="fmPrWa" target="_blank" rel="noopener">' + WA_ICON + ' Send Payment Screenshot on WhatsApp</a>' +
           '<ul class="fm-pr-steps"><li>We verify your payment from the screenshot</li>' +
@@ -1300,6 +1315,14 @@ function initRotatingTimer(elementId, storageKey, durationMs) {
   /* ── Static details from config ─────────────────────────── */
   waFloat.href = waLink('Hi! I have a question about the Flute Mastery courses.');
   $('fmPrUpi').textContent = PR.UPI_ID || '';
+  var payDigits = String(PR.PAY_PHONE_NUMBER || '').replace(/\D/g, '').slice(-10);
+  if (payDigits.length === 10) {
+    $('fmPrPayPhone').textContent = '+91 ' + payDigits.slice(0, 5) + ' ' + payDigits.slice(5);
+    $('fmPrPayName').textContent = PR.PAY_PHONE_NAME || '';
+    if (!PR.PAY_PHONE_NAME) $('fmPrPhoneBlock').querySelector('.fm-pr-payee').style.display = 'none';
+  } else {
+    $('fmPrPhoneBlock').style.display = 'none';   // not configured yet → hidden
+  }
   var qr = $('fmPrQr');
   qr.addEventListener('error', function () { qr.style.display = 'none'; });   // missing file → hide, no broken icon
   if (PR.QR_IMAGE) { qr.src = PR.QR_IMAGE; qr.alt = 'UPI QR code to pay Flute Mastery (' + (PR.UPI_ID || '') + ')'; } else { qr.style.display = 'none'; }
@@ -1340,6 +1363,7 @@ function initRotatingTimer(elementId, storageKey, durationMs) {
     });
     $('fmPrPrice').textContent = fmt(p.price);
     $('fmPrPrice2').textContent = fmt(p.price);
+    Array.prototype.forEach.call(modal.querySelectorAll('.fm-pr-price3'), function (el) { el.textContent = fmt(p.price); });
     $('fmPrOrig').textContent = p.originalPrice ? fmt(p.originalPrice) : '';
     var msg = waLink(screenshotMessage());
     $('fmPrWa').href = msg; $('fmPrAlreadyWa').href = msg;
@@ -1351,7 +1375,7 @@ function initRotatingTimer(elementId, storageKey, durationMs) {
     var lc = lastCheckout();
     if (lc) selectedKey = lc.productKey;
     refresh();
-    $('fmPrCopied').textContent = ''; $('fmPrStatus').textContent = '';
+    $('fmPrCopied').textContent = ''; $('fmPrCopiedPhone').textContent = ''; $('fmPrStatus').textContent = '';
     lastFocus = document.activeElement;
     modal.classList.add('active'); modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -1399,21 +1423,27 @@ function initRotatingTimer(elementId, storageKey, durationMs) {
     document.body.removeChild(ta);
     return ok;
   }
-  var copyTimer = null;
-  $('fmPrCopy').addEventListener('click', function () {
-    var id = String(PR.UPI_ID || '').trim(), out = $('fmPrCopied');
+  var copyTimers = {};
+  function copyText(text, outId, textElId, okMsg) {
+    var out = $(outId);
     function done(ok) {
-      if (ok) { out.style.color = '#6FE3A3'; out.textContent = '✓ UPI ID copied!'; }
+      if (ok) { out.style.color = '#6FE3A3'; out.textContent = okMsg; }
       else {
         out.style.color = 'rgba(255,255,255,0.6)';
-        out.textContent = 'Couldn\'t copy automatically — press and hold the UPI ID to copy it.';
-        try { var r = document.createRange(); r.selectNodeContents($('fmPrUpi')); var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r); } catch (e) { /* ignore */ }
+        out.textContent = 'Couldn\'t copy automatically — press and hold the text above to copy it.';
+        try { var r = document.createRange(); r.selectNodeContents($(textElId)); var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r); } catch (e) { /* ignore */ }
       }
-      clearTimeout(copyTimer); copyTimer = setTimeout(function () { out.textContent = ''; }, 3500);
+      clearTimeout(copyTimers[outId]); copyTimers[outId] = setTimeout(function () { out.textContent = ''; }, 3500);
     }
-    if (!id) { done(false); return; }
-    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(id).then(function () { done(true); }, function () { done(legacyCopy(id)); });
-    else done(legacyCopy(id));
+    if (!text) { done(false); return; }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(legacyCopy(text)); });
+    else done(legacyCopy(text));
+  }
+  $('fmPrCopy').addEventListener('click', function () {
+    copyText(String(PR.UPI_ID || '').trim(), 'fmPrCopied', 'fmPrUpi', '✓ UPI ID copied!');
+  });
+  $('fmPrCopyPhone').addEventListener('click', function () {
+    copyText(payDigits, 'fmPrCopiedPhone', 'fmPrPayPhone', '✓ Phone number copied!');
   });
 
   /* ── Floating buttons: WhatsApp at the bottom, "Pay here" 12 px above it;
