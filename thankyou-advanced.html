@@ -64,18 +64,12 @@
       </div>
 
       <div class="ty-actions">
-        <!-- Advanced Course Google Drive folder -->
-        <a href="https://drive.google.com/drive/folders/1QaVj_1NovCO5EwqA_1uaz7xsdJuwfimp?usp=sharing"
-           target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg btn-full">
-          🎵 Access Your Advanced Course (Google Drive)
-        </a>
-
-        <!-- 30 Alankaar eBook -->
-        <a href="https://drive.google.com/drive/folders/1vF1APbIScbVZi5kq71fxfSS4gBwvvDKF?usp=sharing"
-           target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark btn-lg btn-full"
-           style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.75)">
-          📄 Get Your 30 Alankaar eBook
-        </a>
+        <!-- Course access appears here only AFTER the payment is verified with
+             Razorpay by the Google Script (links are no longer in the page code). -->
+        <div id="tyAccess" style="display:flex;flex-direction:column;gap:12px">
+          <span class="btn btn-primary btn-lg btn-full" style="opacity:0.6;pointer-events:none">⏳ Verifying your payment…</span>
+        </div>
+        <p id="tyAccessStatus" style="color:rgba(255,255,255,0.6);font-size:0.82rem;text-align:center;margin:-4px 0 4px">Confirming your payment with Razorpay…</p>
 
         <a id="tyWhatsappBtnAdvanced"
            href="https://wa.me/918709268496?text=Hi!%20I%20just%20purchased%20the%20Advanced%20Flute%20Mastery%20course.%20Please%20help%20me%20get%20started!"
@@ -93,54 +87,5 @@
   </div>
 
   <script src="script.js"></script>
-  <script>
-    /* Self-contained thank-you logic for the Advanced Course — kept
-       separate from the Beginner Course's initThankYou() in script.js
-       so nothing about the Beginner Course's working tracking is
-       touched. Uses the SAME Meta Pixel ID/init above, just a
-       different content_name/value for CAPI-matching product ID. */
-    (function () {
-      var params    = new URLSearchParams(window.location.search);
-      var paymentId = params.get('payment_id') ||
-        (function () { try { return sessionStorage.getItem('rzp_payment_id_advanced'); } catch (e) { return ''; } })() || 'N/A';
-      var name  = (function () { try { return sessionStorage.getItem('rzp_student_name_advanced');  } catch (e) { return ''; } })() || '';
-      var email = (function () { try { return sessionStorage.getItem('rzp_student_email_advanced'); } catch (e) { return ''; } })() || '';
-      var phone = (function () { try { return sessionStorage.getItem('rzp_student_phone_advanced'); } catch (e) { return ''; } })() || '';
-
-      var idEl = document.getElementById('tyPaymentIdAdvanced');
-      if (idEl) idEl.textContent = paymentId;
-
-      var waBtn = document.getElementById('tyWhatsappBtnAdvanced');
-      if (waBtn && paymentId && paymentId !== 'N/A') {
-        var waText = 'Hi! I purchased the Advanced Flute Mastery course' +
-          (name ? ' (Name: ' + name + ')' : '') +
-          '. My Payment ID is ' + paymentId + '. I need help accessing my course.';
-        waBtn.href = 'https://wa.me/918709268496?text=' + encodeURIComponent(waText);
-      }
-
-      if (paymentId && paymentId !== 'N/A') {
-        var fireKey = 'px_purchase_fired_' + paymentId;
-        var alreadyFired = false;
-        try { alreadyFired = !!sessionStorage.getItem(fireKey); } catch (e) { /* ignore */ }
-        if (!alreadyFired) {
-          try { sessionStorage.setItem(fireKey, '1'); } catch (e) { /* ignore */ }
-          try { window.history.replaceState(null, '', window.location.pathname); } catch (e) { /* ignore */ }
-
-          if (typeof setPixelAdvancedMatching === 'function') {
-            setPixelAdvancedMatching({ name: name, email: email, phone: phone });
-          }
-          if (typeof fbqTrack === 'function') {
-            fbqTrack('Purchase', {
-              value: 999,
-              currency: 'INR',
-              content_name: 'Advanced Flute Mastery',
-              content_type: 'product',
-              transaction_id: paymentId,
-            }, { eventID: paymentId });
-          }
-        }
-      }
-    })();
-  </script>
 </body>
 </html>
